@@ -14,6 +14,7 @@ CREATE TABLE wt_ums_college(
     wt_collid INT PRIMARY KEY AUTO_INCREMENT COMMENT '学院编号',
     wt_collname VARCHAR(20) NOT NULL DEFAULT '默认学院名称'
 )ENGINE =InnoDB,charset =utf8mb4;
+ALTER TABLE wt_ums_college ADD CONSTRAINT UNIQUE (wt_collname);
 
 # 创建专业表
 CREATE TABLE wt_ums_major(
@@ -79,6 +80,7 @@ CREATE TABLE wt_ums_students(
     CONSTRAINT FOREIGN KEY fk_mno (wt_mno) REFERENCES  wt_ums_major(wt_mno) ON DELETE SET NULL ,
     CONSTRAINT FOREIGN KEY fk_classno (wt_classno) REFERENCES wt_ums_class(wt_classsno) ON DELETE SET NULL
 )ENGINE =InnoDB,charset =utf8mb4;
+ALTER TABLE wt_ums_students ADD UNIQUE (wt_id);
 
 # 学生健康码
 CREATE TABLE wt_ums_stu_healthcode(
@@ -129,4 +131,7 @@ CREATE TABLE wt_stu_score(
     FOREIGN KEY fk_cno(wt_cno) REFERENCES wt_ums_course(wt_cno) ON DELETE CASCADE ,
     FOREIGN KEY fk_tid(wt_tid) REFERENCES wt_ums_teachers(wt_tid) ON DELETE SET NULL
 )ENGINE =InnoDB,charset =utf8mb4;
+
+
+
 
