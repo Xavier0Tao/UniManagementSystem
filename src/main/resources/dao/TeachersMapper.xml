@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.uni.dao.TeachersMapper">
+
+    <resultMap id="BaseResultMap" type="org.uni.domain.Teachers">
+            <id property="tid" column="wt_tid" jdbcType="INTEGER"/>
+            <result property="id" column="wt_id" jdbcType="VARCHAR"/>
+            <result property="name" column="wt_name" jdbcType="VARCHAR"/>
+            <result property="tage" column="wt_tage" jdbcType="INTEGER"/>
+            <result property="tsex" column="wt_tsex" jdbcType="VARCHAR"/>
+            <result property="trole" column="wt_trole" jdbcType="VARCHAR"/>
+            <result property="tstatus" column="wt_tstatus" jdbcType="VARCHAR"/>
+            <result property="tphone" column="wt_tphone" jdbcType="VARCHAR"/>
+            <result property="collid" column="wt_collid" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        wt_tid,wt_id,wt_name,
+        wt_tage,wt_tsex,wt_trole,
+        wt_tstatus,wt_tphone,wt_collid
+    </sql>
+</mapper>

@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/wangt_mis
+    username: root
+    password: password
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+      table-prefix: wt_ums_
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
