@@ -1,7 +1,7 @@
 package org.uni.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.uni.domain.Teachers;
-import com.baomidou.mybatisplus.service.IService;
 
 /**
 * @author Tao
