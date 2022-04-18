@@ -5,9 +5,7 @@ import java.io.Serializable;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -17,14 +15,16 @@ import org.springframework.stereotype.Repository;
 @Repository
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class College implements Serializable {
     /**
      * 学院编号
      */
 
 
-    @TableId
-    private Integer wtCollid;
+    @TableId(value = "wt_collid")
+    private Integer collegeId;
 
     /**
      *

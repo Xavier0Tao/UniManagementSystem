@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.uni.dao.StuScoreMapper">
+
+    <resultMap id="BaseResultMap" type="org.uni.domain.StuScore">
+            <id property="sno" column="wt_sno" jdbcType="OTHER"/>
+            <id property="cno" column="wt_cno" jdbcType="INTEGER"/>
+            <result property="cterm" column="wt_cterm" jdbcType="INTEGER"/>
+            <result property="score" column="wt_score" jdbcType="DECIMAL"/>
+            <result property="tid" column="wt_tid" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    </sql>
+</mapper>
