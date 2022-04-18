@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.uni.dao.CourseMapper">
+
+    <resultMap id="BaseResultMap" type="org.uni.domain.Course">
+     <!--       <id property="cno" column="wt_cno" jdbcType="INTEGER"/>
+            <result property="cname" column="wt_cname" jdbcType="VARCHAR"/>
+            <result property="ccredit" column="wt_ccredit" jdbcType="INTEGER"/>
+            <result property="chours" column="wt_chours" jdbcType="INTEGER"/>
+            <result property="cform" column="wt_cform" jdbcType="VARCHAR"/>
+            <result property="cterm" column="wt_cterm" jdbcType="INTEGER"/>-->
+    </resultMap>
+
+</mapper>

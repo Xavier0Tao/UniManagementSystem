@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.uni.dao.StuHealthcodeMapper">
+
+    <resultMap id="BaseResultMap" type="org.uni.domain.StuHealthcode">
+            <result property="sid" column="wt_sid" jdbcType="OTHER"/>
+            <result property="codeColor" column="wt_code_color" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        wt_sid,wt_code_color
+    </sql>
+</mapper>

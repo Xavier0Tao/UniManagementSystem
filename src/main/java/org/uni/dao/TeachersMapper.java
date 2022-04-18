@@ -1,7 +1,7 @@
 package org.uni.dao;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.uni.domain.Teachers;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
 * @author Tao

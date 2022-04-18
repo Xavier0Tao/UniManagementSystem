@@ -1,6 +1,6 @@
 package org.uni.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.uni.domain.Teachers;
 import org.uni.service.TeachersService;
 import org.uni.dao.TeachersMapper;

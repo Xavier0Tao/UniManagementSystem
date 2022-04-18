@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.Data;
+import lombok.*;
 
 /**
  * 
@@ -13,12 +13,16 @@ import lombok.Data;
  */
 @TableName(value ="wt_ums_major")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode
 public class Major implements Serializable {
     /**
      * 专业编号
      */
-    @TableId
-    private Integer wtMno;
+    @TableId(value = "wt_mno")
+    private Integer majorNo;
 
     /**
      * 
