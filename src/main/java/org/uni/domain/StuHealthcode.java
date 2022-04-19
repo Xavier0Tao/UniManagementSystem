@@ -20,9 +20,9 @@ import lombok.*;
 @EqualsAndHashCode
 public class StuHealthcode implements Serializable {
     /**
-     * 
+     * 学生编号
      */
-    @TableField(value = "wt_sid")
+    @TableId(value = "wt_sid")
     private int sid;
 
     /**

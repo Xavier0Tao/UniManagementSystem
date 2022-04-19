@@ -13,7 +13,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 @Mapper
 @Repository
-public interface StuHealthcodeMapper extends BaseMapper<StuHealthcode> {
+public interface stuHealthcodeMapper extends BaseMapper<StuHealthcode> {
 
 }
 

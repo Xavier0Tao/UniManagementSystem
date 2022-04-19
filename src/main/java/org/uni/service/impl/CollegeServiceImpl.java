@@ -1,5 +1,6 @@
 package org.uni.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.uni.domain.College;
@@ -27,9 +28,18 @@ public class CollegeServiceImpl implements CollegeService{
     }
 
     @Override
-    public List<College> queryByName(String name) {
+    public boolean delById(int id) {
+        return mapper.deleteById(id) > 0;
+    }
 
-        return null;
+    @Override
+    public List<College> getAll() {
+        return mapper.selectList(null);
+    }
+
+    @Override
+    public List<College> queryByName(String name) {
+        return mapper.selectList(new QueryWrapper<College>().eq("wt_collname", name));
     }
 
 

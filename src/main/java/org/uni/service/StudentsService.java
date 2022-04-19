@@ -9,5 +9,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2022-04-18 15:24:49
 */
 public interface StudentsService extends IService<Students> {
+    public boolean hasDuplicateId(String identity);
 
 }

@@ -13,6 +13,10 @@ import java.util.List;
 public interface CollegeService {
     boolean add(College college);
 
+    boolean delById(int id);
+
+    List<College> getAll();
+
     List<College> queryByName(String name);
 
 }
