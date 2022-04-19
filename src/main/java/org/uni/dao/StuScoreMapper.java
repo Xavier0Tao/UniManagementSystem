@@ -1,5 +1,7 @@
 package org.uni.dao;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 import org.uni.domain.StuScore;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
@@ -9,6 +11,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2022-04-18 15:15:28
 * @Entity org.uni.domain.WtStuScore
 */
+@Mapper
+@Repository
 public interface StuScoreMapper extends BaseMapper<StuScore> {
 
 }
