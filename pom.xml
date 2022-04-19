@@ -28,12 +28,12 @@
             <version>2.2.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatisplus-spring-boot-starter -->
-       <!-- <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatisplus-spring-boot-starter</artifactId>
-            <version>1.0.5</version>
-        </dependency>-->
+        <dependency>
+            <groupId>com.github.jeffreyning</groupId>
+            <artifactId>mybatisplus-plus</artifactId>
+            <version>1.5.1-RELEASE</version>
+        </dependency>
+
 
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
         <dependency>

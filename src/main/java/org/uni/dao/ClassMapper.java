@@ -1,6 +1,8 @@
 package org.uni.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 import org.uni.domain.Class;
 
 /**
@@ -9,6 +11,8 @@ import org.uni.domain.Class;
 * @createDate 2022-04-18 14:44:58
 * @Entity org.uni.domain.Class
 */
+@Mapper
+@Repository
 public interface ClassMapper extends BaseMapper<Class> {
 
 

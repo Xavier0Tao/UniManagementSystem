@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import com.github.jeffreyning.mybatisplus.anno.MppMultiId;
 import lombok.*;
 
 /**
@@ -22,13 +23,15 @@ public class StuScore implements Serializable {
     /**
      * 学号
      */
-    @TableId(value = "wt_sno")
+    @MppMultiId
+    @TableField("wt_sno")
     private Object sno;
 
     /**
      * 课程编号
      */
-    @TableId(value = "wt_cno")
+    @MppMultiId
+    @TableField("wt_cno")
     private Integer cno;
 
     /**
