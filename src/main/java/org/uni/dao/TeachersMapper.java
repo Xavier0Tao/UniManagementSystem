@@ -14,6 +14,4 @@ import org.uni.domain.Teachers;
 @Mapper
 @Repository
 public interface TeachersMapper extends BaseMapper<Teachers> {
-
-
 }
