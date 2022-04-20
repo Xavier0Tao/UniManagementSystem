@@ -1,5 +1,12 @@
 use mysql;
 
+#Can not find table primary key in Class: "org.uni.domain.StuCheck".
+/*Can not find table primary key in Class: "org.uni.domain.StuHealthcode".
+Can not find table primary key in Class: "org.uni.domain.TeaCheck".
+Can not find table primary key in Class: "org.uni.domain.TeaCour".
+Can not find table primary key in Class: "org.uni.domain.TeaHealthcode".
+Can not find table primary key in Class: "org.uni.domain.StuScore".*/
+
 # 创建数据库
 CREATE DATABASE wangt_mis default charset utf8mb4;
 
@@ -84,10 +91,12 @@ ALTER TABLE wt_ums_students ADD UNIQUE (wt_id);
 
 # 学生健康码
 CREATE TABLE wt_ums_stu_healthcode(
-    wt_sid INT UNSIGNED ,
+    wt_sid INT UNSIGNED COMMENT '学生学号',
     wt_code_color VARCHAR(7) COMMENT '码颜色',
     CONSTRAINT FOREIGN KEY fk_sid (wt_sid) REFERENCES wt_ums_students(wt_sno) ON DELETE CASCADE
 )ENGINE =InnoDB,charset =utf8mb4;
+ALTER TABLE wt_ums_stu_healthcode ADD PRIMARY KEY (wt_sid);
+
 
 # 教师健康码
 CREATE TABLE wt_ums_tea_healthcode(
@@ -95,6 +104,7 @@ CREATE TABLE wt_ums_tea_healthcode(
     wt_code_color VARCHAR(7) COMMENT '颜色',
     CONSTRAINT FOREIGN KEY fk_tid (wt_tid) REFERENCES wt_ums_teachers(wt_tid) ON DELETE CASCADE
 )ENGINE = InnoDB,charset =utf8mb4;
+ALTER TABLE wt_ums_tea_healthcode ADD PRIMARY KEY (wt_tid);
 
 # 教师打卡表
 CREATE TABLE wt_ums_tea_check(

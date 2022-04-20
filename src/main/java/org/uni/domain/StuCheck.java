@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
 import java.util.Date;
 
+import io.swagger.models.auth.In;
 import lombok.*;
 
 /**
@@ -24,13 +25,17 @@ public class StuCheck implements Serializable {
      * 学生编号
      */
     @TableField(value = "wt_sid")
-    private int sid;
+    private Integer sid;
 
     /**
      * 打卡记录
      */
     @TableField(value = "wt_records")
     private Date records;
+
+    public StuCheck(Integer sid) {
+        this.sid = sid;
+    }
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

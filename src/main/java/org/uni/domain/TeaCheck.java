@@ -32,6 +32,10 @@ public class TeaCheck implements Serializable {
     @TableField(value = "wt_records")
     private Date records;
 
+    public TeaCheck(Integer tid) {
+        this.tid = tid;
+    }
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

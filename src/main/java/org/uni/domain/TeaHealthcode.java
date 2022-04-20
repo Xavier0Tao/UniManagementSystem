@@ -22,7 +22,7 @@ public class TeaHealthcode implements Serializable {
     /**
      * 教师编号
      */
-    @TableField(value = "wt_tid")
+    @TableId(value = "wt_tid")
     private Integer tid;
 
     /**

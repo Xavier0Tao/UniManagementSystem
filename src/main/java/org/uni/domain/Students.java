@@ -23,7 +23,7 @@ public class Students implements Serializable {
      * 学生编号
      */
     @TableId(value = "wt_sno", type = IdType.AUTO)
-    private Object sno;
+    private int sno;
 
     /**
      * 身份证

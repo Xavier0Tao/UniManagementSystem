@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" id="" value="发送请求" @click="press">{{msg}}</input>
+
+    </div>
+
+    <script>
+        var health = {
+            "BeenArea": 0,
+            "BeenAboard": 1,
+            "Close": 1,
+            "Confirmed": 1,
+            "Unhealthy": 1,
+            "SeriousUnheathy": 1
+        }
+
+        var js = JSON.stringify(health);
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: "msg",
+            },
+            methods: {
+                press: function () {
+                    alert("send post...");
+                    axios.post("http://localhost:8080/healthCode/color", {js
+                    }).then(function (response) {
+                        console.log(response);
+                    })
+                }
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>
