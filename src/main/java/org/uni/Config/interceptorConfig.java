@@ -14,11 +14,11 @@ public class interceptorConfig implements WebMvcConfigurer {
         LoginInterceptor loginInterceptor = new LoginInterceptor();
 
 
-        registry.addInterceptor(loginInterceptor)
+/*        registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/*")
-                /**
+                *//**
                  * 放行 主页，swagger ,
-                 */
+                 *//*
                 .excludePathPatterns("/swagger-resources/**"
                         , "/webjars/**"
                         , "/v2/**"
@@ -31,7 +31,6 @@ public class interceptorConfig implements WebMvcConfigurer {
                         "classpath:/static/**",
                         "classpath:/static/vuejs/**",
                         "classpath:/static/assets/**",
-                        "classpath:/static/forms/**");
-
+                        "classpath:/static/forms/**");*/
     }
 }

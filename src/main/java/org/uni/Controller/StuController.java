@@ -27,13 +27,7 @@ public class StuController {
      * @return
      */
     @PostMapping("/register")
-    public Result register(@RequestParam("id") String identity, @RequestParam("sname") String sname,
-                           @RequestParam(name = "collid", required = false) Integer collegeId,
-                           @RequestParam(name = "sex", required = false) String sex,
-                           @RequestParam(name = "sori",required = false) String origin) {
-        Students student = new Students();
-        student.setId(identity);student.setCollid(collegeId); student.setSname(sname);
-        student.setSex(sex);student.setSori(origin);
+    public Result register(@RequestBody Students student) {
 
         boolean hasDuplicateId = studentsService.hasDuplicateId(student.getId());
 
@@ -77,8 +71,8 @@ public class StuController {
      * @param identity
      */
     @PostMapping("/login")
-    public Result login(@RequestParam(value = "studentNo", required = false) Integer sno
-            , @RequestParam(name = "identity",required = false) String identity, HttpServletRequest request) {
+    public Result login(@RequestParam(name = "studentNo",required = false) Integer sno
+            , @RequestParam(name = "identity", required = false) String identity, HttpServletRequest request) {
 
         //查询条件
         QueryWrapper<Students> wrapper = new QueryWrapper<>();
@@ -89,7 +83,7 @@ public class StuController {
         HttpSession session = request.getSession();
 
         //在login之后把信息加入session中
-        if(stu != null) {
+        if (stu != null) {
             session.setAttribute("ROLE", "STU");
             session.setAttribute("ROLEINFO", stu);
         }

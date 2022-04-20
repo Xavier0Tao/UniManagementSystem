@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 
 <head>
   <meta charset="utf-8">
@@ -78,39 +78,37 @@
                   </div>
 
                   <!-- *****************学生的表单*********************** -->
-                  <form action="http://localhost:30/students/register" method="post" class="row g-3 needs-validation" v-show="show_stu_form === 1" novalidate @submit="formCheck(stu)">
+                  <form action="http://localhost:30/students/register" method="post" class="row g-3 needs-validation"
+                    v-show="show_stu_form === 1" novalidate>
                     <div class="col-12">
                       <label for="sname" class="form-label">学生姓名</label>
-                      <input type="text" name="sname" class="form-control" v-model="stu.sname" id="sname" required>
-                      <div class="invalid-feedback">请输入学生姓名</div>
+                      <input type="text" name="sname" class="form-control" @input="detectName" v-model="stu.sname" id="sname" required>
+                      <div :class="nameMsg.nClass" >{{nameMsg.msg}}</div>
                     </div>
 
                     <div class="col-12">
                       <label for="studentIdentity" class="form-label">身份证</label>
-                      <input type="number" v-model="stu.id" name="id" class="form-control" id="studentIdentity"
+                      <input type="number" v-model="stu.id" name="id" @input="detectId" class="form-control" id="studentIdentity"
                         required>
-                      <div class="invalid-feedback">请输入正确的身份证！</div>
+                      <div :class="idMsg.iClass">{{idMsg.msg}}</div>
                     </div>
 
                     <div class="col-12">
-
                       <label for="collegeId" class="form-label">学院编号</label>
                       <input type="number" placeholder="*选填 " name="collid" v-model="stu.collid" class="form-control"
                         id="collegeId">
-
                     </div>
 
                     <div class="col-12">
                       <label for="city" class="form-label">生源地</label>
-                      <input type="text" placeholder="请输入城市" v-model="stu.sori" name="sori" class="form-control" id="city">
+                      <input type="text" placeholder="请输入城市" v-model="stu.sori" name="sori" class="form-control"
+                        id="city">
                     </div>
 
-
-
                     <div class="col-12">
-                      <label for="sex" class="form-label">性别</label>
-                      <input type="text" placeholder="请输入male或female" v-model="stu.sex" name="sex" class="form-control"
-                        id="sex" required>
+                      <label class="form-label">性别</label>
+                      <input type="text" placeholder="请输入male或female" v-on:input="detectSex" v-model="stu.sex" class="form-control" required>
+                      <div :class="cSex">{{sex_message}}</div>
                     </div>
 
                     <div class="col-12">
@@ -121,60 +119,69 @@
                         <div class="invalid-feedback">You must agree before submitting.</div>
                       </div>
                     </div>
+
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit" @click="" >Create Account</button>
+                      <input class="btn btn-primary w-100" type="button" value="Create Account"
+                        @click="checkSubmit()"></input>
                     </div>
+
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>
                     </div>
                   </form>
 
                   <!-- *****************教师的表单*********************** -->
-                  <form action="http://localhost:30/teachers/register" method="post" class="row g-3 needs-validation" v-show="show_tea_form === 1" novalidate @submit="formCheck(teacher)">
+                  <form action="http://localhost:30/teachers/register" method="post" class="row g-3 needs-validation"
+                    v-show="show_tea_form === 1" novalidate @submit="formCheck(teacher)">
                     <div class="col-12">
                       <!--   名字-->
                       <label for="yourName" class="form-label">Teacher Name</label>
-                      <input type="text" name="name" v-model="teacher.name" class="form-control" id="yourName" required>
-                      <div class="invalid-feedback">Please, enter your name!</div>
+                      <input type="text" v-model="teacher.name" class="form-control" @input="detectName" id="yourName" required>
+                      <div :class="nameMsg.nClass" >{{nameMsg.msg}}</div>
                     </div>
 
                     <div class="col-12">
                       <label for="identity" class="form-label">身份证</label>
-                      <input type="number" name="id" v-model="teacher.id" class="form-control" id="identity" required>
-                      <div class="invalid-feedback">请输入正确的身份证！</div>
+                      <input type="number" name="id" v-model="teacher.id" @input="detectId" class="form-control" id="identity" required>
+                      <div :class="idMsg.iClass">{{idMsg.msg}}</div>
                     </div>
 
                     <div class="col-12">
                       <label for="role" class="form-label">教师角色</label>
-                      <select class="form-select" id="role" v-model="teacher.trole" name="trole" required>
+                      <select class="form-select" id="role" v-model="teacher.trole" name="trole" @change="detectRole" required>
                         <option value="普通教师">普通教师</option>
                         <option value="校级管理员">校级管理员</option>
                         <option value="院级管理员">院级管理员</option>
                         <option value="系统管理员" disabled>系统管理员 *禁用*</option>
                       </select>
+                      <div :class="trole.roleClass">{{trole.msg}}</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="sexinput" class="form-label">性别</label>
-                      <input type="text" placeholder="*选填  请输入male或female" v-model="teacher.sex" name="tsex"
-                        class="form-control" id="sexinput" required>
+                      <label  class="form-label">性别</label>
+                      <input type="text" placeholder="请输入male或female" v-on:input="detectSexTea" v-model="teacher.sex" class="form-control" required>
+                      <div :class="cSex">{{sex_message}}</div>
                     </div>
+
 
                     <div class="col-12">
                       <label for="collegeId" class="form-label">学院编号</label>
-                      <input type="number" placeholder="*选填 " v-model="teacher.collegeId" name="collegeId" class="form-control" id="yourPassword">
+                      <input type="number" placeholder="*选填 " v-model="teacher.collegeId" name="collegeId"
+                        class="form-control" id="yourPassword">
                     </div>
 
                     <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTermstea" required>
-                        <label class="form-check-label" for="acceptTermstea">I agree and accept the <a href="#">terms and
+                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTermstea"
+                          required>
+                        <label class="form-check-label" for="acceptTermstea">I agree and accept the <a href="#">terms
+                            and
                             conditions</a></label>
                         <div class="invalid-feedback">You must agree before submitting.</div>
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                      <button class="btn btn-primary w-100" type="button" @click="checkSubmit()">Create Account</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>

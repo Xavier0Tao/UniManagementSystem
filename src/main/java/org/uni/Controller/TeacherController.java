@@ -4,11 +4,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.uni.domain.Teachers;
 import org.uni.service.TeachersService;
 import org.uni.utils.dataModel.Result;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -36,17 +39,7 @@ public class TeacherController {
      *   "tsex": "string",
      *   "tstatus": "string"
      */
-    public Result register(@RequestParam(name = "name") String teacherName,
-                           @RequestParam(name = "id") String identity,
-                           @RequestParam(name = "trole") String trole,
-                           @RequestParam(name = "tsex") String sex,
-                           @RequestParam(name = "collegeId", required = false) Integer collegeId) {
-        Teachers teacher = new Teachers();
-        teacher.setName(teacherName);
-        teacher.setId(identity);
-        teacher.setTrole(trole);
-        teacher.setTsex(sex);
-        teacher.setCollegeId(collegeId);
+    public Result register(@RequestBody Teachers teacher) {
 
         boolean isDulplicateId = teachersService.hasDuplicateId(teacher.getId());
 
@@ -84,7 +77,8 @@ public class TeacherController {
 
     @PostMapping("/login")
     public Result login(@RequestParam(value = "identity", required = false) String identity,
-                        @RequestParam(name = "teacherId", required = false) Integer teacherId, HttpServletRequest request) {
+                              @RequestParam(name = "teacherId", required = false) Integer teacherId,
+                              @RequestParam(name = "remember",required = false) String rememberMe, HttpServletRequest request, HttpServletResponse response) {
 
         QueryWrapper<Teachers> wrapper = new QueryWrapper<>();
         wrapper.eq(identity != null, "wt_id", identity)
@@ -98,6 +92,7 @@ public class TeacherController {
         if (teacher != null) {
             session.setAttribute("ROLE", "T_" + teacher.getTrole());
             session.setAttribute("ROLEINFO", teacher);
+            //TODO RememberMe
         }
 
         return teacher == null ? new Result(false, "没有此教师信息") : new Result(teacher);
