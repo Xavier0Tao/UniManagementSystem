@@ -27,4 +27,5 @@ public class healthCondition {
 
     //超过一种情况
     boolean isSeriousUnheathy;
+
 }

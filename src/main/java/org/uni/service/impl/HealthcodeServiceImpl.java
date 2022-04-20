@@ -1,6 +1,7 @@
 package org.uni.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.uni.dao.StudentsMapper;
@@ -22,7 +23,7 @@ import javax.print.DocFlavor;
 * @createDate 2022-04-18 15:22:09
 */
 @Service
-public class HealthcodeServiceImpl implements HealthcodeService {
+public class HealthcodeServiceImpl extends ServiceImpl<stuHealthcodeMapper, StuHealthcode>  implements HealthcodeService{
 
 
     @Autowired

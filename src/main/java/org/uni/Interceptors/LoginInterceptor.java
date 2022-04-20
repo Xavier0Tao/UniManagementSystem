@@ -12,11 +12,16 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        System.out.println("...interceptor pre 放行....");
+        System.out.println("...interceptor pre 开始....");
+
         //TODO login后在Session中添加 ***ROLE***
         String role = (String) request.getSession().getAttribute("ROLE");
+        if (role != null) {
+            return true;
+        }
 
-        return true;
+        System.out.println("没有放行....");
+        return false;
     }
 
     @Override
