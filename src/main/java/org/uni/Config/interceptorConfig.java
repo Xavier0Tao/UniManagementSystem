@@ -15,14 +15,23 @@ public class interceptorConfig implements WebMvcConfigurer {
 
 
         registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/**")
+                .addPathPatterns("/*")
                 /**
                  * 放行 主页，swagger ,
                  */
                 .excludePathPatterns("/swagger-resources/**"
                         , "/webjars/**"
                         , "/v2/**"
-                        , "/swagger-ui.html/**","index.html");
+                        , "/swagger-ui.html/**",
+                        "/index.html",
+                        "/test.html",
+                        "/pages-register.html",
+                        "/pages-login.html",
+                        //******放行了静态资源*********
+                        "classpath:/static/**",
+                        "classpath:/static/vuejs/**",
+                        "classpath:/static/assets/**",
+                        "classpath:/static/forms/**");
 
     }
 }

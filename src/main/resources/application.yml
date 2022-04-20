@@ -13,3 +13,6 @@ mybatis-plus:
       table-prefix: wt_ums_
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+server:
+  port: 30

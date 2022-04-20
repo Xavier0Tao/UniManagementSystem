@@ -21,15 +21,36 @@ public class TeacherController {
 
     /**
      * 教师注册
-     * @param teacher
+     *
      * @return
      */
     @PostMapping("/register")
-    public Result register(@RequestBody Teachers teacher) {
+    /**
+     * "collegeId": 0,
+     *   "id": "string",
+     *   "name": "string",
+     *   "tage": 0,
+     *   "teacherId": 0,
+     *   "tphone": "string",
+     *   "trole": "string",
+     *   "tsex": "string",
+     *   "tstatus": "string"
+     */
+    public Result register(@RequestParam(name = "name") String teacherName,
+                           @RequestParam(name = "id") String identity,
+                           @RequestParam(name = "trole") String trole,
+                           @RequestParam(name = "tsex") String sex,
+                           @RequestParam(name = "collegeId", required = false) Integer collegeId) {
+        Teachers teacher = new Teachers();
+        teacher.setName(teacherName);
+        teacher.setId(identity);
+        teacher.setTrole(trole);
+        teacher.setTsex(sex);
+        teacher.setCollegeId(collegeId);
 
         boolean isDulplicateId = teachersService.hasDuplicateId(teacher.getId());
 
-        if (isDulplicateId) return new Result(!isDulplicateId,"重复身份证号码");
+        if (isDulplicateId) return new Result(!isDulplicateId, "重复身份证号码");
         return new Result(teachersService.save(teacher));
     }
 

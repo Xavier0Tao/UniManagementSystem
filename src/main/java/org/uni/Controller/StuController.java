@@ -23,11 +23,17 @@ public class StuController {
     /**
      * 注册学生用户
      *
-     * @param student
+     * @param
      * @return
      */
     @PostMapping("/register")
-    public Result register(@RequestBody Students student) {
+    public Result register(@RequestParam("id") String identity, @RequestParam("sname") String sname,
+                           @RequestParam(name = "collid", required = false) Integer collegeId,
+                           @RequestParam(name = "sex", required = false) String sex,
+                           @RequestParam(name = "sori",required = false) String origin) {
+        Students student = new Students();
+        student.setId(identity);student.setCollid(collegeId); student.setSname(sname);
+        student.setSex(sex);student.setSori(origin);
 
         boolean hasDuplicateId = studentsService.hasDuplicateId(student.getId());
 
@@ -51,7 +57,8 @@ public class StuController {
                                    @RequestParam(name = "collegeId", required = false) Integer collegeId,
                                    @RequestParam(name = "majorNo", required = false) Integer majorNo,
                                    @RequestParam(name = "sex", required = false) String sex,
-                                   @RequestParam(name = "studentNo",required = false) Integer studentNo) {
+                                   @RequestParam(name = "studentNo", required = false) Integer studentNo) {
+
         QueryWrapper<Students> wrapper = new QueryWrapper<>();
         wrapper.eq(homeTown != null, "wt_sori", homeTown)
                 .eq(collegeId != null, "wt_collid", collegeId)
@@ -61,7 +68,7 @@ public class StuController {
 
         List<Students> list = studentsService.list(wrapper);
 
-        return list.size()==0 ? new Result(false, "没有满足条件的学生") : new Result(list);
+        return list.size() == 0 ? new Result(false, "没有满足条件的学生") : new Result(list);
     }
 
     /**
