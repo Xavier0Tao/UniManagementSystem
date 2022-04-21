@@ -1,6 +1,7 @@
 package org.uni.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.uni.domain.College;
@@ -16,7 +17,7 @@ import java.util.List;
 * @createDate 2022-04-18 12:49:18
 */
 @Service
-public class CollegeServiceImpl implements CollegeService{
+public class CollegeServiceImpl extends ServiceImpl<CollegeMapper,College> implements CollegeService{
 
     @Autowired
     @Qualifier("collegeDao")

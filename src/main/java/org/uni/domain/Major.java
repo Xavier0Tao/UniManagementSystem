@@ -36,6 +36,11 @@ public class Major implements Serializable {
     @TableField("wt_collid")
     private Integer collegeId;
 
+    public Major(String majorName, Integer collegeId) {
+        this.majorName = majorName;
+        this.collegeId = collegeId;
+    }
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

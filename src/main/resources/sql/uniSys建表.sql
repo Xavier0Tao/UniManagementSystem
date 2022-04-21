@@ -34,11 +34,12 @@ CREATE TABLE wt_ums_major(
 
 # 创建班级表
 CREATE TABLE wt_ums_class(
-    wt_classsno int primary key auto_increment COMMENT '班级编号',
+    wt_classno int primary key auto_increment COMMENT '班级编号',
     wt_mno INT COMMENT '外键关联专业编号',
     wt_mname VARCHAR(22) COMMENT '反范式化',
     FOREIGN KEY fk_mno (wt_mno) REFERENCES wt_ums_major(wt_mno) ON DELETE CASCADE
 )ENGINE =InnoDB ,charset =utf8mb4;
+
 
 # 创建教师表
 CREATE TABLE wt_ums_teachers
@@ -85,7 +86,7 @@ CREATE TABLE wt_ums_students(
     PRIMARY KEY pk_sno (wt_sno) COMMENT '主键',
     CONSTRAINT FOREIGN KEY fk_collid (wt_collid) REFERENCES wt_ums_college(wt_collid) ON DELETE SET NULL ,
     CONSTRAINT FOREIGN KEY fk_mno (wt_mno) REFERENCES  wt_ums_major(wt_mno) ON DELETE SET NULL ,
-    CONSTRAINT FOREIGN KEY fk_classno (wt_classno) REFERENCES wt_ums_class(wt_classsno) ON DELETE SET NULL
+    CONSTRAINT FOREIGN KEY fk_classno (wt_classno) REFERENCES wt_ums_class(wt_classno) ON DELETE SET NULL
 )ENGINE =InnoDB,charset =utf8mb4;
 ALTER TABLE wt_ums_students ADD UNIQUE (wt_id);
 

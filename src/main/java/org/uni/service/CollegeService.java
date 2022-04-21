@@ -10,7 +10,7 @@ import java.util.List;
  * @description 针对表【wt_ums_college】的数据库操作Service
  * @createDate 2022-04-18 12:49:18
  */
-public interface CollegeService {
+public interface CollegeService extends IService<College>{
     //TODO 在注册表单页面实时查询是否有该学院
 
     boolean add(College college);

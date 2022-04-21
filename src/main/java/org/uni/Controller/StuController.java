@@ -45,6 +45,10 @@ public class StuController {
         return new Result(studentsService.list());
     }
 
+    @GetMapping("/{stuNo}")
+    public Result getById(@PathVariable Integer stuNo) {
+        return new Result(studentsService.getById(stuNo));
+    }
 
     @GetMapping
     public Result conditionalQuery(@RequestParam(required = false, name = "homeTown") String homeTown,
