@@ -78,7 +78,7 @@
                   </div>
 
                   <!-- *****************学生的表单*********************** -->
-                  <form action="http://localhost:30/students/register" method="post" class="row g-3 needs-validation"
+                  <div action="http://localhost:30/students/register" method="post" class="row g-3 needs-validation"
                     v-show="show_stu_form === 1" novalidate>
                     <div class="col-12">
                       <label for="sname" class="form-label">学生姓名</label>
@@ -128,10 +128,10 @@
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>
                     </div>
-                  </form>
+                  </div>
 
                   <!-- *****************教师的表单*********************** -->
-                  <form action="http://localhost:30/teachers/register" method="post" class="row g-3 needs-validation"
+                  <div action="http://localhost:30/teachers/register" method="post" class="row g-3 needs-validation"
                     v-show="show_tea_form === 1" novalidate @submit="formCheck(teacher)">
                     <div class="col-12">
                       <!--   名字-->
@@ -186,7 +186,7 @@
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>
                     </div>
-                  </form>
+                  </div>
                 </div>
               </div>
 

@@ -85,8 +85,8 @@
                       <label for="teaIdentity" class="form-label">身份证</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" >ID</span>
-                        <input type="text" name="identity" class="form-control" id="teaIdentity" required>
-                        <div class="invalid-feedback">Please enter your identity.</div>
+                        <input type="number" @input="detectIdentity" v-model="teacher.identity" placeholder="请输入教师身份证号" name="identity" class="form-control" id="teaIdentity" required>
+                        <div v-show="identity.code == 0" class="text-danger">请输入正确的身份证号</div>
                       </div>
                     </div>
 
@@ -94,8 +94,8 @@
                       <label for="teaNo" class="form-label">教师编号</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" >TeacherId</span>
-                        <input type="text" name="teacherId" class="form-control" id="teaNo" required>
-                        <div class="invalid-feedback">Please enter your teacher Id.</div>
+                        <input type="number" @click="detectId" v-model="teacher.teaId" placeholder="请输入教师编号"  name="teacherId" class="form-control" id="teaNo" required>
+                        <div v-show="ids.code == 0" class="text-danger">请输入正确的编号</div>
                       </div>
                     </div>
 
@@ -106,7 +106,7 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
+                      <button @click="formCheck" class="btn btn-primary w-100" type="button">Login</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
@@ -122,8 +122,8 @@
                       <label for="teaIdentity" class="form-label">身份证</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text">ID</span>
-                        <input type="text" name="identity" class="form-control"  required>
-                        <div class="invalid-feedback">Please enter your identity.</div>
+                        <input type="number" @input="detectIdentity" v-model="stu.identity" placeholder="请输入学生身份证" name="identity" class="form-control"  required>
+                        <div v-show="identity.code === 0" class="text-danger">请输入正确的身份证号</div>
                       </div>
                     </div>
 
@@ -131,8 +131,8 @@
                       <label for="stuId" class="form-label">学生编号</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">Student ID</span>
-                        <input type="text" name="studentNo" class="form-control" id="stuId" required>
-                        <div class="invalid-feedback">Please enter your identity.</div>
+                        <input type="number" @click="detectId" v-model="stu.stuId" placeholder="请输入学生编号"  name="studentNo" class="form-control" id="stuId" required>
+                        <div v-show="ids.code==0" class="text-danger">请输入正确的编号</div>
                       </div>
                     </div>
 
@@ -143,7 +143,7 @@
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Login</button>
+                      <button @click="formCheck" class="btn btn-primary w-100" type="button">Login</button>
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>

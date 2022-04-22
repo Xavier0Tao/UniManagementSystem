@@ -73,31 +73,34 @@ var registerCard = new Vue({
             if (flag == false) return flag;
 
             if (this.show_stu_form == 1) {
-
                 axios.post("http://localhost:30/students/register", this.stu)
-                    .then(function (response) {
-                        // {"code":1,"msg":"成功","data":null}
-                        if (response.code == 1) {
+                    .then(function(response){
+                        //请求成功
+                        if (response.status == 200) {
+                            /*跳转到登录页面*/
                             window.location.href = "http://localhost:30/pages-login.html";
                         }
-                    }, function (error) {
+                     })
+                    .catch(function (error){
+                        //注册失败
+                        alert("注册失败，请重新注册");
                         window.location.href = "http://localhost:30/pages-register.html";
-                    })
+                    });
+
             } else {
                 axios.post("http://localhost:30/teachers/register", this.teacher)
                     .then(function (response) {
-                        
-                        if(response.code==1){
+                        //请求成功
+                        if (response.status == 200) {
+                            /*跳转到登录页面*/
                             window.location.href = "http://localhost:30/pages-login.html";
                         }
-
                     }, function (error) {
-                        alert(error);
+                        alert("注册失败，请重新注册");
                         window.location.href = "http://localhost:30/pages-register.html";
                     })
             }
 
-            alert("...");
         },
         detectSex: function () {
             if (this.stu.sex == "male" || this.stu.sex == 'female') {
