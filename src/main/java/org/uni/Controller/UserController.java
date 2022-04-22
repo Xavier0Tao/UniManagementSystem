@@ -1,8 +1,6 @@
 package org.uni.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.uni.utils.dataModel.Result;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,4 +27,12 @@ public class UserController {
         return roleinfo == null ? new Result(false, "没有登录") : new Result(roleinfo);
     }
 
+    @PutMapping("/logout")
+    public Result logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.removeAttribute("ROLE");
+        session.removeAttribute("ROLEINFO");
+
+        return new Result(true);
+    }
 }

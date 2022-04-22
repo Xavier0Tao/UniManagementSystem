@@ -12,6 +12,7 @@ import org.uni.utils.dataModel.Result;
 import org.uni.utils.dataModel.healthCondition;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 @RequestMapping("/healthCodes")
@@ -28,6 +29,7 @@ public class healthCodeController {
 
     /**
      * 提交表单信息 获取健康码 设置健康码 并且新增打卡记录
+     *
      * @param condition
      * @param identity
      * @return
@@ -73,5 +75,16 @@ public class healthCodeController {
         return teaHealthcode == null ? new Result(false, "无此教师的健康码信息") : new Result(teaHealthcode);
     }
 
+    @GetMapping("/students")
+    public Result getAllStu() {
+        List<StuHealthcode> list = healthcodeService.list();
+        return list.size() == 0 ? new Result(false, "没有学生健康码信息") : new Result(list);
+    }
+
+    @GetMapping("/teachers")
+    public Result getAllTeachers() {
+        List<TeaHealthcode> list = teaHealthcodeService.list();
+        return list.size() == 0 ? new Result(false, "没有教师健康码信息") : new Result(list);
+    }
 
 }

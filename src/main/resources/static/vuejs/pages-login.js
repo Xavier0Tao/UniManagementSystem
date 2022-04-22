@@ -59,7 +59,7 @@ var registerCard = new Vue({
                 var params = new URLSearchParams();
                 params.append("identity", this.stu.identity);
                 params.append("studentNo", this.stu.stuId);
-                axios.post("http://localhost:30//students/login",params)
+                axios.post("http://localhost:30/students/login",params)
                     .then(function (response){
                         if(response.status == 200) {
                             if (response.data.code == 1){
@@ -68,12 +68,12 @@ var registerCard = new Vue({
                         }
                     }).catch(function (error){
                         alert("登录失败,请重新登录");
-                })
+                });
             }else {
                 var params = new URLSearchParams();
                 params.append("identity", this.teacher.identity);
                 params.append("teacherId", this.teacher.teaId);
-                axios.post("http://localhost:30//students/login",params)
+                axios.post("http://localhost:30/teachers/login",params)
                     .then(function (response){
                         if(response.status == 200) {
                             if (response.data.code == 1){
@@ -93,5 +93,4 @@ var registerCard = new Vue({
         }
     }
 })
-
 
