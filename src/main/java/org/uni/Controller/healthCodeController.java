@@ -34,15 +34,17 @@ public class healthCodeController {
      * @param identity
      * @return
      */
-    @PostMapping("/submit")
-    public Result getHealethCode(@RequestBody healthCondition condition, @RequestParam(value = "identity", required = true) String identity, HttpServletRequest request) throws ClassNotFoundException {
+    @PostMapping("/submit/{identity}")
+    public Result getHealethCode(@RequestBody healthCondition condition, @PathVariable String identity, HttpServletRequest request) throws ClassNotFoundException {
 
         Result result = new Result((Object) healthcodeService.judgeCode(condition));
 
         String color = (String) result.getData();
+
+        // 设置健康码颜色..
         healthcodeService.setCode(identity, color);
 
-        //打卡记录
+        // 新增打卡记录
         healthCheckController.check(request);
 
         return result;

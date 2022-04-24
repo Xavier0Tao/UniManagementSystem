@@ -16,3 +16,5 @@ mybatis-plus:
 
 server:
   port: 30
+  tomcat:
+    max-http-form-post-size: -1

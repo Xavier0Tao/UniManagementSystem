@@ -550,8 +550,8 @@
                     <div class="container">
                       <div class="row justify-content-between">
                         <div class="btn btn-primary col-sm-5 col-10"  @click="getStuCode" >学生</div>
-
-                        <div class="btn btn-primary col-sm-5 col-10" @click="getTeaCode">教师</div>
+                        <div class="btn btn-primary col-sm-5 col-10 mt-1 my-sm-0" @click="getTeaCode">教师</div>
+                        <div class="btn btn-primary col-sm-12 mx-sm-auto mt-1 col-10" data-bs-toggle="collapse" data-bs-target="#covidCheck">打卡</div>
                       </div>
                     </div>
                       <!-- <div class="ps-3">
@@ -602,7 +602,7 @@
             </div><!-- End Revenue Card -->
 
             <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
+            <div class="col-xxl-4 col-xl-12 ">
 
               <div class="card info-card customers-card">
 
@@ -620,7 +620,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
+                  <h5 class="card-title">customer <span>| This Year</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -638,6 +638,115 @@
               </div>
 
             </div><!-- End Customers Card -->
+
+            <!-- Recent Sales -->
+            <div class="col-12 collapse" id="covidCheck">
+              <div class="card recent-sales">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">战疫打卡 <span>| Today</span></h5>
+                  <!-- Horizontal Form -->
+                  <form >
+                    <div class="row mb-3">
+                      <label class="col-sm-2 col-form-label">身份证号 Identity</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control w-50 border-dark"
+                               v-model="covid_Check.identity">
+                      </div>
+                    </div>
+
+                    <fieldset class="row mb-3">
+
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">是否去过国外 ?Been aboard?</label>
+                        <div class="col-sm-10">
+                          <select class="form-select" v-model="covid_Check.condition.beenAboard">
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">是否到过疫情中高风险地区 ?</label>
+                        <div class="col-sm-10">
+                          <select class="form-select" v-model="covid_Check.condition.beenArea" required>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">是否密接 ?</label>
+                        <div class="col-sm-10">
+                          <select class="form-select" v-model="covid_Check.condition.close" required>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label">阳了 ?Confirmed?</label>
+                        <div class="col-sm-10">
+                          <select class="form-select" v-model="covid_Check.condition.confirmed" required>
+                            <option value="1">是</option>
+                            <option value="0">否</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label  class="col-sm-2 col-form-label">有发烧（≥37.3℃）、乏力、干咳、鼻塞、流涕、 咽痛、腹泻中情况的几种
+                          ？Are u ok?</label>
+                        <div class="col-sm-10">
+                          <input type="number" v-model="covid_Check.healthy" max="7" min="0" class="form-control w-50 border-dark" id="inputText">
+                        </div>
+                      </div>
+
+                    </fieldset>
+
+                    <div class="row mb-3">
+                      <div class="col-sm-10 offset-sm-2">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="gridCheck1">
+                          <label class="form-check-label" for="gridCheck1">
+                            Example checkbox
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="text-center m-3 fs-5" >
+                      <div :class="covid_Check.msg.color">
+                        {{covid_Check.msg.content}}
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary" @click="submitCovidCheck">Submit</button>
+                    </div>
+
+                  </form><!-- End Horizontal Form -->
+
+                </div>
+
+              </div>
+            </div><!-- End Recent Sales -->
 
             <!-- Reports -->
             <div class="col-12">
@@ -658,7 +767,7 @@
 
                 <div class="card-body">
                   <div class="d-flex">
-                    <h5 class="card-title">Reports <span>/Today</span></h5>
+                    <h5 class="card-title">健康码情况 <span>/Today</span></h5>
                     <button class="btn btn-secondary h-50 my-auto ms-5" @click="hideCodes">隐藏</button>
                   </div>
 
@@ -758,79 +867,7 @@
               </div>
             </div><!-- End Reports -->
 
-            <!-- Recent Sales -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td>$64</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2147</a></th>
-                        <td>Bridie Kessler</td>
-                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                        <td>$47</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2049</a></th>
-                        <td>Ashleigh Langosh</td>
-                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                        <td>$147</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Angus Grady</td>
-                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                        <td>$67</td>
-                        <td><span class="badge bg-danger">Rejected</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Raheem Lehner</td>
-                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        <td>$165</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div><!-- End Recent Sales -->
+            
 
             <!-- Top Selling -->
             <div class="col-12">
