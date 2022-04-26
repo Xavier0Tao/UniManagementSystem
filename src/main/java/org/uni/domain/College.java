@@ -38,4 +38,8 @@ public class College implements Serializable {
         this.collegeName = name;
     }
 
+    public College(String collegeId, String collegeName) {
+        this.collegeName = collegeName;
+        this.collegeId = Integer.valueOf(collegeId);
+    }
 }
