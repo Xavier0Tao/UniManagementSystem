@@ -36,6 +36,7 @@ public class healthCodeController {
      */
     @PostMapping("/submit/{identity}")
     public Result getHealethCode(@RequestBody healthCondition condition, @PathVariable String identity, HttpServletRequest request) throws ClassNotFoundException {
+        System.out.println("condition/...." + condition);
 
         Result result = new Result((Object) healthcodeService.judgeCode(condition));
 

@@ -82,7 +82,7 @@
                     v-show="show_stu_form === 1" novalidate>
                     <div class="col-12">
                       <label for="sname" class="form-label">学生姓名</label>
-                      <input type="text" name="sname" class="form-control" @input="detectName" v-model="stu.sname" id="sname" required>
+                      <input type="text"  class="form-control" @input="detectName" v-model="stu.sname" id="sname" required>
                       <div :class="nameMsg.nClass" >{{nameMsg.msg}}</div>
                     </div>
 

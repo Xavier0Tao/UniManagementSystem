@@ -43,12 +43,14 @@ public class HealthcodeServiceImpl extends ServiceImpl<stuHealthcodeMapper, StuH
      */
     @Override
     public String judgeCode(healthCondition condition) {
-        if (condition.isBeenArea() || condition.isBeenArea() || condition.isUnhealthy()) {
-            return "YELLOW";
-        } else if (condition.isClose() || condition.isConfirmed() || condition.isSeriousUnheathy()) {
+        if (condition.isClose() || condition.isConfirmed() || condition.isSeriousUnheathy()) {
             return "RED";
+        } else if (condition.isBeenArea() || condition.isBeenAboard() || condition.isUnhealthy()) {
+            return "YELLOW";
+        } else {
+            return "GREEN";
         }
-        return "GREEN";
+
     }
 
 
@@ -65,8 +67,10 @@ public class HealthcodeServiceImpl extends ServiceImpl<stuHealthcodeMapper, StuH
 
         if (stu_id != 0) {
             StuHealthcode stucode = new StuHealthcode(stu_id,color);
+            System.out.println("...new StuHealthcode(stu_id,color)..." + color);
 //            return stuHealthcodeDao.update(stucode, new QueryWrapper<StuHealthcode>().eq("wt_sid", stu_id)) > 0;
-            return stuHealthcodeDao.updateById(stucode) > 0;
+//            return stuHealthcodeDao.updateById(stucode) > 0;
+            return stuHealthcodeDao.update(stucode.getCodeColor(), stucode.getSid()) > 0;
         } else if (teacherId != 0) {
             TeaHealthcode teacode = new TeaHealthcode(teacherId, color);
             return teaHealthcodeDao.updateById(teacode) > 0 ;

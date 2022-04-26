@@ -226,7 +226,7 @@
             <li>
               <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                 <i class="bi bi-person"></i>
-                <span>My Profile</span>
+                <span class="me-2">我的号码</span> {{user.stuffId}}
               </a>
             </li>
             <li>
@@ -524,46 +524,7 @@
         <div class="col-lg-8">
           <div class="row">
 
-            <!-- HealthCode Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">健康码 <span>| Today</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <!-- <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    </div> -->
-                    <div class="container">
-                      <div class="row justify-content-between">
-                        <div class="btn btn-primary col-sm-5 col-10"  @click="getStuCode" >学生</div>
-                        <div class="btn btn-primary col-sm-5 col-10 mt-1 my-sm-0" @click="getTeaCode">教师</div>
-                        <div class="btn btn-primary col-sm-12 mx-sm-auto mt-1 col-10" data-bs-toggle="collapse" data-bs-target="#covidCheck">打卡</div>
-                      </div>
-                    </div>
-                      <!-- <div class="ps-3">
-                        <h6>145</h6>
-                        <span class="text-success small pt-1 fw-bold">12%</span> <span
-                        class="text-muted small pt-2 ps-1">increase</span>
-                    </div> -->
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
 
             <!-- Revenue Card -->
             <div class="col-xxl-4 col-md-6">
@@ -639,6 +600,46 @@
 
             </div><!-- End Customers Card -->
 
+            <!-- HealthCode Card -->
+            <div class="col-xxl-4 col-md-6">
+              <div class="card info-card sales-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">健康码 <span>| Today</span></h5>
+
+                  <div class="d-flex align-items-center">
+                    <!-- <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    </div> -->
+                    <div class="container">
+                      <div class="row justify-content-between">
+                        <div class="btn btn-primary col-sm-5 col-10"  @click="getStuCode" >学生</div>
+                        <div class="btn btn-primary col-sm-5 col-10 mt-1 my-sm-0" @click="getTeaCode">教师</div>
+                        <div class="btn btn-primary col-sm-12 mx-sm-auto mt-1 col-10" data-bs-toggle="collapse" data-bs-target="#covidCheck">打卡</div>
+                      </div>
+                    </div>
+                    <!-- <div class="ps-3">
+                      <h6>145</h6>
+                      <span class="text-success small pt-1 fw-bold">12%</span> <span
+                      class="text-muted small pt-2 ps-1">increase</span>
+                  </div> -->
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Sales Card -->
             <!-- Recent Sales -->
             <div class="col-12 collapse" id="covidCheck">
               <div class="card recent-sales">
@@ -674,8 +675,8 @@
                         <label class="col-sm-2 col-form-label">是否去过国外 ?Been aboard?</label>
                         <div class="col-sm-10">
                           <select class="form-select" v-model="covid_Check.condition.beenAboard">
-                            <option value="1">是</option>
-                            <option value="0">否</option>
+                            <option value="TRUE">是</option>
+                            <option value="FALSE">否</option>
                           </select>
                         </div>
                       </div>
@@ -684,8 +685,8 @@
                         <label class="col-sm-2 col-form-label">是否到过疫情中高风险地区 ?</label>
                         <div class="col-sm-10">
                           <select class="form-select" v-model="covid_Check.condition.beenArea" required>
-                            <option value="1">是</option>
-                            <option value="0">否</option>
+                            <option value="TRUE">是</option>
+                            <option value="FALSE">否</option>
                           </select>
                         </div>
                       </div>
@@ -694,8 +695,8 @@
                         <label class="col-sm-2 col-form-label">是否密接 ?</label>
                         <div class="col-sm-10">
                           <select class="form-select" v-model="covid_Check.condition.close" required>
-                            <option value="1">是</option>
-                            <option value="0">否</option>
+                            <option value="TRUE">是</option>
+                            <option value="FALSE">否</option>
                           </select>
                         </div>
                       </div>
@@ -704,8 +705,8 @@
                         <label class="col-sm-2 col-form-label">阳了 ?Confirmed?</label>
                         <div class="col-sm-10">
                           <select class="form-select" v-model="covid_Check.condition.confirmed" required>
-                            <option value="1">是</option>
-                            <option value="0">否</option>
+                            <option value="TRUE">是</option>
+                            <option value="FALSE">否</option>
                           </select>
                         </div>
                       </div>
@@ -806,7 +807,6 @@
                     </tr>
                     </tbody>
                   </table>
-
 
                   <!--  <script>
                     document.addEventListener("DOMContentLoaded", () => {
