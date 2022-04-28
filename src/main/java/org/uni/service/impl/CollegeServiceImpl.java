@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.uni.domain.College;
 import org.uni.service.CollegeService;
 import org.uni.dao.CollegeMapper;
@@ -17,6 +18,7 @@ import java.util.List;
 * @createDate 2022-04-18 12:49:18
 */
 @Service
+@Lazy(value = false)
 public class CollegeServiceImpl extends ServiceImpl<CollegeMapper,College> implements CollegeService{
 
     @Autowired

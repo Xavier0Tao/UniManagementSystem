@@ -1,5 +1,7 @@
 package org.uni.Controller;
 
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,14 +14,25 @@ import java.lang.reflect.Proxy;
 
 
 public class baseServlet extends HttpServlet {
+
+    public void init() throws ServletException {
+        super.init();
+        WebApplicationContextUtils
+                .getWebApplicationContext(getServletContext())
+                .getAutowireCapableBeanFactory().autowireBean(this);
+    }
+
     /**
      * 根据请求URL的后半段地址分发 方法
      * 类似SpringMVC对http请求的分发RequestMapping
+     *
      * @param req
      * @param resp
      */
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
         //1.获取请求路径
         String requestURI = req.getRequestURI();
 
@@ -43,7 +56,7 @@ public class baseServlet extends HttpServlet {
             Method method = servletClass.getMethod(methodname, HttpServletRequest.class, HttpServletResponse.class);
 
             //调用方法(传的是参数） 上面的method定义里写的是什么 这里的参数就传什么
-            method.invoke(this,req, resp);
+            method.invoke(this, req, resp);
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         } catch (InvocationTargetException e) {

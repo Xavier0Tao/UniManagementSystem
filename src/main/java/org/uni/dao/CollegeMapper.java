@@ -2,6 +2,7 @@ package org.uni.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 import org.uni.domain.College;
 
@@ -13,6 +14,7 @@ import org.uni.domain.College;
 */
 @Mapper
 @Repository("collegeDao")
+@Lazy(value = false)
 public interface CollegeMapper extends BaseMapper<College> {
 
 }

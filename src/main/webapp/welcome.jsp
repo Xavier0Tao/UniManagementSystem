@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Tao
@@ -14,5 +15,10 @@
 <h1>
 
 </h1>
+
+<%@ include file="header.jsp"%>
+
+
+
 </body>
 </html>

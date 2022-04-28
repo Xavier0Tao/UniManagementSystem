@@ -6,7 +6,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
-@ServletComponentScan(basePackages = {"org.uni.Controller"})
+@ServletComponentScan(basePackages = {"org.uni.Controller","org.uni.Interceptors"})
 @EnableSwagger2
 public class UniManaSysApplication {
 
