@@ -204,19 +204,25 @@
         </li><!-- End 学院管理 Nav -->
 
         <li class="nav-item">
-            <a class="nav-link" href="student-managment.jsp">
+            <a class="nav-link collapsed" href="student-managment.jsp">
                 <i class="bi bi-person"></i>
                 <span>学生管理</span>
             </a>
         </li><!-- End 学生管理 Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="class-managment.jsp">
+            <a class="nav-link" href="class-managment.jsp">
                 <i class="bi bi-person"></i>
                 <span>班级管理</span>
             </a>
         </li><!-- End 班级管理 Nav -->
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="major-management.jsp">
+                <i class="bi bi-person"></i>
+                <span>专业管理</span>
+            </a>
+        </li><!-- End 班级管理 Nav -->
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="users-profile.html">
@@ -380,7 +386,7 @@
                             <div class="tab-pane fade pt-3" id="profile-settings">
 
                                 <!-- Settings Form -->
-                                <form action="/classServlet/delete" method="post">
+                                <form action="/classServlet/delete" method="post" validate>
                                     <div class="card-title">删除班级</div>
 
                                     <!--===============College Id============-->

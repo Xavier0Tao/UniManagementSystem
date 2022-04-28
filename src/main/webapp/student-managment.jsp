@@ -217,6 +217,13 @@
                 </a>
             </li><!-- End 班级管理 Nav -->
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="major-management.jsp">
+                    <i class="bi bi-person"></i>
+                    <span>专业管理</span>
+                </a>
+            </li><!-- End 班级管理 Nav -->
+
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="users-profile.html">

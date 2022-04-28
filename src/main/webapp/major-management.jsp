@@ -1,51 +1,19 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%--
   Created by IntelliJ IDEA.
   User: Tao
   Date: 2022/4/28
-  Time: 13:00
+  Time: 19:06
   To change this template use File | Settings | File Templates.
 --%>
-
-<!DOCTYPE html>
-
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Users / Profile - NiceAdmin Bootstrap Template</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
+    <title>Student Management</title>
 </head>
 
 <body>
-
-<!-- ======= Header ======= -->
-<%@ include file="header.jsp"%>
+<%@include file="header.jsp" %>
 
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
@@ -61,7 +29,8 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Components</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-menu-button-wide"></i><span>Components</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
@@ -167,7 +136,8 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
@@ -232,7 +202,7 @@
         <li class="nav-heading">Pages</li>
 
         <li class="nav-item">
-            <a class="nav-link " href="college-managment.jsp">
+            <a class="nav-link collapsed" href="college-managment.jsp">
                 <i class="bi bi-person"></i>
                 <span>学院管理</span>
             </a>
@@ -253,11 +223,12 @@
         </li><!-- End 班级管理 Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="major-management.jsp">
+            <a class="nav-link" href="major-management.jsp">
                 <i class="bi bi-person"></i>
                 <span>专业管理</span>
             </a>
         </li><!-- End 班级管理 Nav -->
+
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="users-profile.html">
@@ -312,14 +283,15 @@
 
 </aside><!-- End Sidebar-->
 
+<!-- ======= main ======= -->
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>College Manegment</h1>
+        <h1>Major Manegment</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">College Managment</li>
+                <li class="breadcrumb-item active">Major Managment</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -331,7 +303,7 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                        <h2>学院管理</h2>
+                        <h2>专业管理</h2>
                         <div class="social-links mt-2">
                             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -351,15 +323,18 @@
                         <ul class="nav nav-tabs nav-tabs-bordered">
 
                             <li class="nav-item">
-                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">概览</button>
+                                <button class="nav-link active" data-bs-toggle="tab"
+                                        data-bs-target="#profile-overview">概览</button>
                             </li>
 
                             <li class="nav-item">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">添加学院</button>
+                                <button class="nav-link" data-bs-toggle="tab"
+                                        data-bs-target="#profile-edit">添加专业</button>
                             </li>
 
                             <li class="nav-item">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">删除学院</button>
+                                <button class="nav-link" data-bs-toggle="tab"
+                                        data-bs-target="#profile-settings">删除专业</button>
                             </li>
 
                         </ul>
@@ -367,43 +342,62 @@
                         <div class="tab-content pt-2">
 
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                <a class=" btn btn-primary my-1" href="/collegeServlet/getAll">查看所有学院</a>
-                                <p class="small fst-italic">点击上面的<span class="lead mx-1">按钮</span>查看所有学院信息</p>
-                                ${colleges}
-
+                                <a class=" btn btn-primary my-1" href="/majorServlet/getAll">查看所有专业</a>
+                                <p class="small fst-italic">点击上面的<span class="lead mx-1">按钮</span>查看所有专业信息</p>
+                                ${majors}
                             </div>
-
+                            <!--===============添加专业===============-->
                             <div class="tab-pane fade  profile-edit pt-3" id="profile-edit">
+                                <!-- Custom Styled Validation -->
+                                <form class="row g-3 needs-validation" action="/majorServlet/add" method="post"  validate>
+                                    <div class="card-title">添加专业</div>
 
-                                <!-- Profile Edit Form -->
-                                <form method="post" action="/collegeServlet/add">
-                                    <div class="card-title">添加学院</div>
+                                    <!--=============== major name===============-->
+                                    <div class="col-md-4">
+                                        <label for="validationCustom01" class="form-label">Major name</label>
+                                        <input type="text" name="majorName" class="form-control" id="validationCustom01"
+                                               placeholder="请输入专业名称" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
 
-                                    <div class="row mb-3">
-                                        <label for="collegeName" class="col-md-4 col-lg-3 col-form-label">College Name</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="collegeName" type="text" class="form-control" id="collegeName" placeholder="请输入学院名称">
+
+                                    <!--===============College Id============-->
+                                    <div class="col-md-4">
+                                        <label for="validationCustomUsername"
+                                               class="form-label">College Id</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                            <input type="number" class="form-control"
+                                                   id="validationCustomUsername"
+                                                   name="collegeId" placeholder="*选填" title="专业所属学院编号">
+                                            <div class="invalid-feedback">
+                                                Please enter a college id.
+                                            </div>
                                         </div>
                                     </div>
 
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">添  加</button>
+                                        <button type="submit" class="btn btn-primary">添 加</button>
                                     </div>
-                                </form><!-- End Profile Edit Form -->
+                                </form><!-- End Custom Styled Validation -->
 
                             </div>
 
                             <div class="tab-pane fade pt-3" id="profile-settings">
 
                                 <!-- Settings Form -->
-                                <form action="/collegeServlet/delete" method="post">
-                                    <div class="card-title">删除学院</div>
+                                <form action="/majorServlet/delete" method="post" validate>
+                                    <div class="card-title">删除专业</div>
 
                                     <div class="row mb-3">
-                                        <label for="collegeId" class="col-md-4 col-lg-3 col-form-label">College Id</label>
+                                        <label for="majorId" class="col-md-4 col-lg-3 col-form-label">Major
+                                            Id</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="collegeId" type="text" class="form-control" id="collegeId" placeholder="请输入学院编号">
+                                            <input name="majorId" type="number" class="form-control"
+                                                   id="majorId" placeholder="请输入专业编号">
                                         </div>
                                     </div>
 
@@ -426,23 +420,20 @@
 
 </main><!-- End #main -->
 
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer">
-    <div class="copyright">
-        &copy; Copyright <strong><span>Bootstrap 5</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Designed by <a href="https://bootstrap.com/">Bootstrap</a>
-    </div>
-</footer><!-- End Footer -->
+<%@include file="footer.jsp" %>
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<!-- Vendor JS Files -->
+<script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/chart.js/chart.min.js"></script>
+<script src="assets/vendor/echarts/echarts.min.js"></script>
+<script src="assets/vendor/quill/quill.min.js"></script>
+<script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+<script src="assets/vendor/tinymce/tinymce.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
 
-
+<!-- Template Main JS File -->
+<script src="assets/js/main.js"></script>
 </body>
 
 </html>
