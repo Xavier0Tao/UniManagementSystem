@@ -15,6 +15,7 @@ public class LoginFilter implements Filter {
     }
 
     @Override
+    @Deprecated
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
         Logger logger = Logger.getLogger(LoginFilter.class.getName());
         logger.info("LoginFilter....init");

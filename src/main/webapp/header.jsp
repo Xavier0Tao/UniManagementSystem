@@ -55,7 +55,6 @@
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
-    <div class="text-primary" id="testItem" @click="test1">{{msg}}</div>
     <div class="search-bar">
         <form class="search-form d-flex align-items-center" method="POST" action="#">
             <input type="text" name="query" placeholder="Search" title="Enter search keyword">
@@ -263,6 +262,13 @@
                         <a class="dropdown-item d-flex align-items-center" href="#">
                             <i class="bi bi-box-arrow-right"></i>
                             <span @click="signOut">Sign Out</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center" target="_self" href="pages-login.html">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span >Sign In</span>
                         </a>
                     </li>
 

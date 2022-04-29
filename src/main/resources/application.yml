@@ -5,11 +5,6 @@ spring:
     username: root
     password: password
     type: com.alibaba.druid.pool.DruidDataSource
-  mvc:
-    view:
-#      prefix: /view/
-      suffix: .jsp
-
 
 mybatis-plus:
   global-config:

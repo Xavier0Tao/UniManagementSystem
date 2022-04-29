@@ -5,6 +5,9 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.uni.Interceptors.LoginInterceptor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Configuration
 public class interceptorConfig implements WebMvcConfigurer {
@@ -13,24 +16,9 @@ public class interceptorConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         LoginInterceptor loginInterceptor = new LoginInterceptor();
 
+        List<String> patterns1 = new ArrayList<>();
+//        patterns1.add("/");
+//        registry.addInterceptor(loginInterceptor).addPathPatterns()
 
-/*        registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/*")
-                *//**
-                 * 放行 主页，swagger ,
-                 *//*
-                .excludePathPatterns("/swagger-resources/**"
-                        , "/webjars/**"
-                        , "/v2/**"
-                        , "/swagger-ui.html/**",
-                        "/index.html",
-                        "/test.html",
-                        "/pages-register.html",
-                        "/pages-login.html",
-                        //******放行了静态资源*********
-                        "classpath:/static/**",
-                        "classpath:/static/vuejs/**",
-                        "classpath:/static/assets/**",
-                        "classpath:/static/forms/**");*/
     }
 }

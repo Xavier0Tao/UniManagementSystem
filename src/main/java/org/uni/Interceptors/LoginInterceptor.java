@@ -14,8 +14,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         System.out.println("...interceptor pre 开始....");
 
-        //TODO login后在Session中添加 ***ROLE***
-        String role = (String) request.getSession().getAttribute("ROLE");
+        Object role =  request.getSession().getAttribute("ROLE");
         if (role != null) {
             return true;
         }

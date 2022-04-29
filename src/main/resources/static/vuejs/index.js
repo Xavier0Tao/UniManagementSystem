@@ -3,7 +3,6 @@ var item = document.querySelector("#testItem");
 var item = new Vue({
     el: "#testItem",
     data: {
-        msg: "mess",
         username: ""
     },
     methods: {
