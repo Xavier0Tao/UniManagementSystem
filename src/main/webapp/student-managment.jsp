@@ -431,7 +431,7 @@
                                 <div class="tab-pane fade pt-3" id="profile-settings">
 
                                     <!-- Settings Form -->
-                                    <form action="/stuServlet/delete" method="post">
+                                    <form action="/stuServlet/delete" method="delete">
                                         <div class="card-title">删除学生</div>
 
                                         <div class="row mb-3">

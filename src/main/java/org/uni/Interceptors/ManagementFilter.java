@@ -3,6 +3,7 @@ package org.uni.Interceptors;
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -17,6 +18,9 @@ public class ManagementFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
+        //===============获取Response对象=============
+        HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+
         //=============强转..获取session域对象==============
         HttpServletRequest httprequest = (HttpServletRequest) request;
         HttpSession session = httprequest.getSession();
@@ -25,7 +29,7 @@ public class ManagementFilter implements Filter {
         String requestURI = httprequest.getRequestURI().substring(1);
 
         Logger logger = Logger.getLogger(ManagementFilter.class.getName());
-        logger.info("请求路径为："+requestURI);
+        logger.info("请求路径为：" + requestURI);
 
         //==============从session中获取登录信息============
         String role = (String) session.getAttribute("ROLE");
@@ -39,6 +43,7 @@ public class ManagementFilter implements Filter {
                 //未登录，拦截
                 logger.warning("未登录，无法访问...");
 
+                //跳转到登录页面
                 request.getRequestDispatcher("/pages-login.html").forward(request, response);
                 return;
             } else if (role.charAt(0) != 'T') {
@@ -46,7 +51,7 @@ public class ManagementFilter implements Filter {
                 logger.warning("无权限，无法访问...");
 
                 //跳转到 无权限error page
-                request.getRequestDispatcher("/pages-error-404.html").forward(request, response);
+                ((HttpServletResponse) response).sendRedirect("/pages-error-404.html");
                 return;
             }
         }
@@ -65,7 +70,10 @@ public class ManagementFilter implements Filter {
                 logger.warning("无权限，无法访问...");
 
                 //跳转到 无权限error page
-                request.getRequestDispatcher("/pages-error-404.html").forward(request, response);
+                ((HttpServletResponse) response).sendRedirect("/pages-error-404.html");
+
+                //跳转到 无权限error page
+//                request.getRequestDispatcher("/pages-error-404.html").forward(request, response);
                 return;
             }
         }
