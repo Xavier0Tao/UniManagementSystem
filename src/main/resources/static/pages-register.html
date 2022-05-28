@@ -107,7 +107,7 @@
 
                     <div class="col-12">
                       <label class="form-label">性别</label>
-                      <input type="text" placeholder="请输入male或female" v-on:input="detectSex" v-model="stu.sex" class="form-control" required>
+                      <input type="text" placeholder="请输入male或female（选填）" v-on:input="detectSex" v-model="stu.sex" class="form-control" required>
                       <div :class="cSex">{{sex_message}}</div>
                     </div>
 
@@ -159,7 +159,7 @@
 
                     <div class="col-12">
                       <label  class="form-label">性别</label>
-                      <input type="text" placeholder="请输入male或female" v-on:input="detectSexTea" v-model="teacher.sex" class="form-control" required>
+                      <input type="text" placeholder="请输入male或female（选填）" v-on:input="detectSexTea" v-model="teacher.sex" class="form-control" required>
                       <div :class="cSex">{{sex_message}}</div>
                     </div>
 

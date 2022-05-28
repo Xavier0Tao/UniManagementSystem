@@ -34,7 +34,7 @@ public class CollegeServlet extends baseServlet {
         this.collegeDao = (CollegeMapper) context.getBean("collegeDao");*/
 
         HttpSession session = request.getSession();
-        session.setAttribute("colleges", collegeDao.selectList(null));
+        session.setAttribute("colleges", collegeService.list());
     }
 
     public void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
