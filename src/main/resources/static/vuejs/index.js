@@ -12,6 +12,9 @@ var item = new Vue({
     }
 });
 
+
+let hostName ='localhost';
+
 //******************顶部用户信息***********************
 var userInfo = new Vue({
     el: "#userInfo",
@@ -25,7 +28,7 @@ var userInfo = new Vue({
     },
     methods: {
         signOut: function () {
-            axios.put("http://localhost:30/loginInfo/logout")
+            axios.put("http://"+hostName+":30/loginInfo/logout")
                 .then(function (response) {
                     if (response.data.code == 1) {
                         alert("登出成功！");
@@ -41,11 +44,11 @@ var userInfo = new Vue({
 // 如一些用户信息
 window.onload = function () {
     //获取用户信息 ，判断用户是否登录
-    axios.get("http://localhost:30/loginInfo/role").then(function (response) {
+    axios.get("http://"+hostName+":30/loginInfo/role").then(function (response) {
         // {code: 1, msg: 'T_普通教师', data: null}
         if (response.data.code == 1) {
             userInfo._data.user.role = response.data.msg;
-            axios.get("http://localhost:30/loginInfo/roleInfo")
+            axios.get("http://"+hostName+":30/loginInfo/roleInfo")
                 .then(function (response) {
                     // {code: 0, msg: '没有登录', data: null}
                     /**
@@ -117,27 +120,27 @@ var main = new Vue({
     methods: {
         getStuCode: function () {
             var that = this;
-            axios.get("http://localhost:30/healthCodes/students")
+            axios.get("http://"+hostName+":30/healthCodes/students")
                 .then(function (response) {
                     if (response.status == 200 && response.data.code == 1) {
                         console.log(response);
                         that.code.showTea = 'hide';
                         that.code.showStu = 'show';
                         that.stuCodes = response.data.data;
-                        window.location.href = "http://localhost:30/index.html#studentCodes";
+                        window.location.href = "http://"+hostName+":30/index.html#studentCodes";
                     }
                 })
         },
         getTeaCode: function () {
             var that = this;
-            axios.get("http://localhost:30/healthCodes/teachers")
+            axios.get("http://"+hostName+":30/healthCodes/teachers")
                 .then(function (response) {
                     if (response.status == 200 && response.data.code == 1) {
                         console.log(response);
                         that.code.showStu = 'hide';
                         that.code.showTea = 'show';
                         that.teaCodes = response.data.data;
-                        window.location.href = "http://localhost:30/index.html#teacherCodes";
+                        window.location.href = "http://"+hostName+":30/index.html#teacherCodes";
                     }
                 })
         },
@@ -191,7 +194,7 @@ var main = new Vue({
                 var that = this;
 
                 //否则 flag == true 表单校验通过
-                axios.post("http://localhost:30/healthCodes/submit/" + this.covid_Check.identity,
+                axios.post("http://"+hostName+":30/healthCodes/submit/" + this.covid_Check.identity,
                     this.covid_Check.condition)
                     .then(function (response) {
                         //status === 200 ajax请求响应接收成功

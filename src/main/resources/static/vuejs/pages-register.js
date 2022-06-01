@@ -1,5 +1,6 @@
+let hostName = 'localhost';
 
-var registerCard = new Vue({
+let registerCard = new Vue({
     el: "#register-card",
     data: {
         msg: "message",
@@ -73,31 +74,31 @@ var registerCard = new Vue({
             if (flag == false) return flag;
 
             if (this.show_stu_form == 1) {
-                axios.post("http://localhost:30/students/register", this.stu)
+                axios.post("http://"+hostName+":30/students/register", this.stu)
                     .then(function(response){
                         //请求成功
                         if (response.status == 200) {
                             /*跳转到登录页面*/
-                            window.location.href = "http://localhost:30/pages-login.html";
+                            window.location.href = "http://"+hostName+":30/pages-login.html";
                         }
                      })
                     .catch(function (error){
                         //注册失败
                         alert("注册失败，请重新注册");
-                        window.location.href = "http://localhost:30/pages-register.html";
+                        window.location.href = "http://"+hostName+":30/pages-register.html";
                     });
 
             } else {
-                axios.post("http://localhost:30/teachers/register", this.teacher)
+                axios.post("http://"+hostName+":30/teachers/register", this.teacher)
                     .then(function (response) {
                         //请求成功
                         if (response.status == 200) {
                             /*跳转到登录页面*/
-                            window.location.href = "http://localhost:30/pages-login.html";
+                            window.location.href = "http://"+hostName+":30/pages-login.html";
                         }
                     }, function (error) {
                         alert("注册失败，请重新注册");
-                        window.location.href = "http://localhost:30/pages-register.html";
+                        window.location.href = "http://"+hostName+":30/pages-register.html";
                     })
             }
 

@@ -65,7 +65,7 @@ public class ManagementFilter implements Filter {
                 "collegeServlet/add".equals(requestURI) ||
                 "majorServlet/delete".equals(requestURI) ||
                 "majorServlet/add".equals(requestURI)) {
-            if (!"T_系统管理员".equals(role)) {
+            if (!"T_系统管理员".equals(role) && !"T_院级管理员".equals(role)) {
                 //没有访问权限，跳转到无权限页面
                 logger.warning("无权限，无法访问...");
 

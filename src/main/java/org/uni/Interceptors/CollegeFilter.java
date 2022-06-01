@@ -21,7 +21,6 @@ public class CollegeFilter implements Filter {
 
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 
-        httpServletResponse.setStatus(301);
-        httpServletResponse.setHeader("location", "/college-managment.jsp");
+        httpServletResponse.sendRedirect("/college-managment.jsp");
     }
 }

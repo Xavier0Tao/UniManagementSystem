@@ -358,6 +358,16 @@
                                             </div>
                                         </div>
 
+                                        <!--===============Identity===============-->
+                                        <div class="col-md-6">
+                                            <label for="" class="form-label">身份证号</label>
+                                            <input type="text" class="form-control" name="identity" id=""
+                                                   placeholder="必填" title="身份证" >
+                                            <div class="invalid-feedback">
+                                                Please provide a valid id.
+                                            </div>
+                                        </div>
+
                                         <!--============== sex ==================-->
                                         <div class="col-md-4">
                                             <label for="validationCustom02" class="form-label">Sex</label>

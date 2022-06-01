@@ -1,13 +1,10 @@
 package org.uni.Controller;
 
-import io.swagger.models.auth.In;
+import com.alibaba.druid.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.uni.domain.Students;
 import org.uni.service.impl.StudentsServiceImpl;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,11 +37,20 @@ public class StuServlet extends baseServlet {
         HttpSession session = request.getSession();
 
         Students student = new Students();
-        student.setSex(request.getParameter("sex"));
-        student.setSname(request.getParameter("sname"));
-        student.setCollid(Integer.valueOf(request.getParameter("collid")));
-        student.setSage(Integer.valueOf(request.getParameter("mno")));
-        student.setSori(request.getParameter("city"));
+        String sex = request.getParameter("sex");
+        String sname = request.getParameter("sname");
+
+        Integer collid = StringUtils.isEmpty(request.getParameter("collid")) ? null : Integer.valueOf(request.getParameter("collid"));
+        Integer mno = StringUtils.isEmpty(request.getParameter("mno")) ? null : Integer.valueOf(request.getParameter("mno"));
+        String city = request.getParameter("city");
+        String identity = request.getParameter("identity");
+
+        if (!StringUtils.isEmpty(identity)) student.setId(identity);
+        if (!StringUtils.isEmpty(sex)) student.setSex(sex);
+        if (!StringUtils.isEmpty(sname)) student.setSname(sname);
+        if (collid != null) student.setCollid(collid);
+        if (mno != null) student.setMno(mno);
+        if (!StringUtils.isEmpty(city)) student.setSori(city);
 
         stuService.save(student);
     }
