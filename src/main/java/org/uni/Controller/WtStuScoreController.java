@@ -4,8 +4,13 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.uni.domain.StuScore;
+import org.uni.dto.CourseAvgDto;
 import org.uni.service.WtStuScoreService;
 import org.uni.utils.dataModel.Result;
+
+import java.math.BigDecimal;
+import java.util.Comparator;
+import java.util.List;
 
 @RestController
 @RequestMapping("/stuScore")
@@ -14,14 +19,43 @@ public class WtStuScoreController {
     private WtStuScoreService stuScoreService;
 
     @GetMapping("/{stuNo}/{courseNo}")
-    public Result getOne(@PathVariable Integer stuNo,
-                         @PathVariable Integer courseNo) {
+    public Result getOne(@PathVariable(name = "stuNo") Integer stuNo,
+                         @PathVariable(name = "courseNo") Integer courseNo) {
         QueryWrapper<StuScore> wrapper = new QueryWrapper<>();
         wrapper.eq("wt_sno", stuNo);
         wrapper.eq("wt_cno", courseNo);
 
         StuScore stuScore = stuScoreService.getOne(wrapper);
         return stuScore == null ? new Result(false, "没有相关信息") : new Result(stuScore);
+    }
+
+    /**
+     * 根据学号获取学生的成绩信息
+     */
+    @GetMapping
+    public Result getScore(@RequestParam(name = "stuNo", required = false) Integer stuNo
+            , @RequestParam(name = "order", required = false) Boolean order) {
+        //条件
+        QueryWrapper<StuScore> wrapper = new QueryWrapper<>();
+        wrapper.eq(stuNo != null, "wt_sno", stuNo);
+
+        // 查询
+        List<StuScore> list = stuScoreService.list(wrapper);
+
+        //结果判空,如果结果为空直接返回
+        if (list == null || list.isEmpty()) return Result.fail();
+
+        //查询结果非空且需要排序
+        if (order != null && order) {
+            //排序
+            list.sort((o1, o2) -> {
+                        BigDecimal diff = o1.getScore().subtract(o2.getScore());
+                        //返回compare的结果
+                        return o1.getScore().compareTo(o2.getScore());
+                    }
+            );
+        }
+        return Result.ok(list);
     }
 
     @PostMapping
@@ -39,5 +73,11 @@ public class WtStuScoreController {
         return new Result(stuScoreService.remove(wrapper));
     }
 
+    @GetMapping("/courseAvg")
+    public Result getCourseAvg() {
+        List<CourseAvgDto> courseAvgs = stuScoreService.getCourseAvg();
+        if (courseAvgs == null || courseAvgs.isEmpty()) return Result.fail();
+        return Result.ok(courseAvgs);
+    }
 
 }

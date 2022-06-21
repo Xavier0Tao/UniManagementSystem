@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.uni.dao.StuScoreMapper">
+
+    <select id="getCourseAvg"  resultType="org.uni.dto.CourseAvgDto">
+/*        select s.wt_cno AS courseNo,avg(s.wt_score) AS avg,c.wt_cname As courseName
+        from wangt_mis.wt_stu_score AS s
+        inner join wangt_mis.wt_ums_course AS c on s.wt_cno = c.wt_cno
+        group by s.wt_cno;*/
+#         select s.wt_cno AS courseNo,12.2 AS avg,c.wt_cname AS courseName from wangt_mis.wt_stu_score AS s inner join wangt_mis.wt_ums_course AS c;
+    </select>
+
+</mapper>

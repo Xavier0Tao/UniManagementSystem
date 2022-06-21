@@ -35,21 +35,33 @@ public class StuController {
         return new Result(studentsService.save(student));
     }
 
+    /**
+     * 根据学号删除学生
+     */
     @DeleteMapping("/del/{sno}")
     public Result delBySno(@PathVariable("sno") int sno) {
         return new Result(studentsService.removeById(sno));
     }
 
+    /**
+     * 查询所有学生
+     */
     @GetMapping("/getAll")
     public Result getAll() {
         return new Result(studentsService.list());
     }
 
+    /**
+     * 根据学号查询学生
+     */
     @GetMapping("/{stuNo}")
     public Result getById(@PathVariable Integer stuNo) {
         return new Result(studentsService.getById(stuNo));
     }
 
+    /**
+     * 条件查询
+     */
     @GetMapping
     public Result conditionalQuery(@RequestParam(required = false, name = "homeTown") String homeTown,
                                    @RequestParam(name = "collegeId", required = false) Integer collegeId,
