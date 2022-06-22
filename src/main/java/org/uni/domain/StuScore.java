@@ -13,7 +13,7 @@ import lombok.*;
  * 
  * @TableName wt_stu_score
  */
-@TableName(value ="wt_stu_score")
+@TableName(value ="wt_stu_score10")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,32 +24,35 @@ public class StuScore implements Serializable {
      * 学号
      */
     @MppMultiId
-    @TableField("wt_sno")
-    private Object sno;
+    @TableField("wt_sno10")
+    private Integer sno;
 
     /**
      * 课程编号
      */
     @MppMultiId
-    @TableField("wt_cno")
+    @TableField("wt_cno10")
     private Integer cno;
 
     /**
      * 学期
      */
-    @TableField(value = "wt_cterm")
+    @TableField(value = "wt_cterm10")
     private Integer cterm;
+
+    @TableField(exist = false)
+    private Integer academicYear;
 
     /**
      * 成绩
      */
-    @TableField(value = "wt_score")
+    @TableField(value = "wt_score10")
     private BigDecimal score;
 
     /**
      * 教师编号
      */
-    @TableField(value = "wt_tid")
+    @TableField(value = "wt_tid10")
     private Integer tid;
 
     @TableField(exist = false)

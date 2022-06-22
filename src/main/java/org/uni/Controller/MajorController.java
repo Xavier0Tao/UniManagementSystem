@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.uni.domain.Major;
 import org.uni.service.MajorService;
-import org.uni.utils.dataModel.Result;
+import org.uni.dto.Result;
 
 import java.util.List;
 

@@ -1,15 +1,13 @@
 package org.uni.Controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.extension.api.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.uni.domain.Students;
 import org.uni.service.StudentsService;
-import org.uni.utils.dataModel.Result;
+import org.uni.dto.Result;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -31,7 +29,7 @@ public class StuController {
 
         boolean hasDuplicateId = studentsService.hasDuplicateId(student.getId());
 
-        if (hasDuplicateId) return new Result(!hasDuplicateId, "重复身份证号码");
+        if (hasDuplicateId) return new Result(false, "重复身份证号码");
         return new Result(studentsService.save(student));
     }
 
@@ -70,11 +68,11 @@ public class StuController {
                                    @RequestParam(name = "studentNo", required = false) Integer studentNo) {
 
         QueryWrapper<Students> wrapper = new QueryWrapper<>();
-        wrapper.eq(homeTown != null, "wt_sori", homeTown)
-                .eq(collegeId != null, "wt_collid", collegeId)
-                .eq(majorNo != null, "wt_mno", majorNo)
-                .eq(sex != null, "wt_sex", sex)
-                .eq(studentNo != null, "wt_sno", studentNo);
+        wrapper.eq(homeTown != null, "wt_sori10", homeTown)
+                .eq(collegeId != null, "wt_collid10", collegeId)
+                .eq(majorNo != null, "wt_mno10", majorNo)
+                .eq(sex != null, "wt_sex10", sex)
+                .eq(studentNo != null, "wt_sno10", studentNo);
 
         List<Students> list = studentsService.list(wrapper);
 
@@ -92,8 +90,8 @@ public class StuController {
 
         //查询条件
         QueryWrapper<Students> wrapper = new QueryWrapper<>();
-        wrapper.eq(sno != null, "wt_sno", sno)
-                .eq(identity != null, "wt_id", identity);
+        wrapper.eq(sno != null, "wt_sno10", sno)
+                .eq(identity != null, "wt_id10", identity);
 
         Students stu = studentsService.getOne(wrapper);
         HttpSession session = request.getSession();

@@ -3,6 +3,7 @@ package org.uni.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.uni.domain.StuScore;
 import org.uni.dto.CourseAvgDto;
+import org.uni.dto.StuCourseDto;
 import org.uni.service.WtStuScoreService;
 import org.uni.dao.StuScoreMapper;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,12 @@ public class WtStuScoreServiceImpl extends ServiceImpl<StuScoreMapper, StuScore>
     public List<CourseAvgDto> getCourseAvg() {
         return stuScoreMapper.getCourseAvg();
     }
+
+    @Override
+    public List<StuCourseDto> getStuCourse(Integer stuNo) {
+        return stuScoreMapper.getStuCourse(stuNo);
+    }
+
 }
 
 

@@ -1,4 +1,4 @@
-package org.uni.utils.dataModel;
+package org.uni.dto;
 
 
 import lombok.*;

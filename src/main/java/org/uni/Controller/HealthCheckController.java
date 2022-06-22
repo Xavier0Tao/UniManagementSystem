@@ -10,7 +10,7 @@ import org.uni.domain.TeaCheck;
 import org.uni.domain.Teachers;
 import org.uni.service.StuCheckService;
 import org.uni.service.TeaCheckService;
-import org.uni.utils.dataModel.Result;
+import org.uni.dto.Result;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

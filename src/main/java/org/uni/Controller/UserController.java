@@ -1,7 +1,7 @@
 package org.uni.Controller;
 
 import org.springframework.web.bind.annotation.*;
-import org.uni.utils.dataModel.Result;
+import org.uni.dto.Result;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

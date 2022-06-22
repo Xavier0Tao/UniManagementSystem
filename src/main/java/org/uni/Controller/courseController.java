@@ -1,11 +1,10 @@
 package org.uni.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.uni.domain.Course;
 import org.uni.service.CourseService;
-import org.uni.utils.dataModel.Result;
+import org.uni.dto.Result;
 
 import java.util.List;
 

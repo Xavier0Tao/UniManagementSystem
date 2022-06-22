@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.uni.domain.TeaCheck;
 import org.uni.service.TeaCheckService;
-import org.uni.utils.dataModel.Result;
+import org.uni.dto.Result;
 
 import java.util.List;
 

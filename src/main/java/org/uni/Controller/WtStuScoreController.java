@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.uni.domain.StuScore;
 import org.uni.dto.CourseAvgDto;
+import org.uni.dto.StuCourseDto;
 import org.uni.service.WtStuScoreService;
-import org.uni.utils.dataModel.Result;
+import org.uni.dto.Result;
 
 import java.math.BigDecimal;
-import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -22,8 +22,8 @@ public class WtStuScoreController {
     public Result getOne(@PathVariable(name = "stuNo") Integer stuNo,
                          @PathVariable(name = "courseNo") Integer courseNo) {
         QueryWrapper<StuScore> wrapper = new QueryWrapper<>();
-        wrapper.eq("wt_sno", stuNo);
-        wrapper.eq("wt_cno", courseNo);
+        wrapper.eq("wt_sno10", stuNo);
+        wrapper.eq("wt_cno10", courseNo);
 
         StuScore stuScore = stuScoreService.getOne(wrapper);
         return stuScore == null ? new Result(false, "没有相关信息") : new Result(stuScore);
@@ -34,10 +34,17 @@ public class WtStuScoreController {
      */
     @GetMapping
     public Result getScore(@RequestParam(name = "stuNo", required = false) Integer stuNo
-            , @RequestParam(name = "order", required = false) Boolean order) {
+            , @RequestParam(name = "order", required = false) Boolean order
+            , @RequestParam(name = "academicYear",required = false) Integer academicYear) {
+
         //条件
         QueryWrapper<StuScore> wrapper = new QueryWrapper<>();
-        wrapper.eq(stuNo != null, "wt_sno", stuNo);
+
+        //可选，根据学生学号查询
+        wrapper.eq(stuNo != null, "wt_sno10", stuNo);
+
+        //可选，根据学年查询
+        wrapper.eq(academicYear != null, "wt_cterm10", academicYear);
 
         // 查询
         List<StuScore> list = stuScoreService.list(wrapper);
@@ -65,10 +72,10 @@ public class WtStuScoreController {
 
     @DeleteMapping("/{stuNo}/{courseNo}")
     public Result del(@PathVariable Integer stuNo,
-                      @PathVariable Integer courseNo){
+                      @PathVariable Integer courseNo) {
         QueryWrapper<StuScore> wrapper = new QueryWrapper<>();
-        wrapper.eq("wt_sno", stuNo);
-        wrapper.eq("wt_cno", courseNo);
+        wrapper.eq("wt_sno10", stuNo);
+        wrapper.eq("wt_cno10", courseNo);
 
         return new Result(stuScoreService.remove(wrapper));
     }
@@ -78,6 +85,22 @@ public class WtStuScoreController {
         List<CourseAvgDto> courseAvgs = stuScoreService.getCourseAvg();
         if (courseAvgs == null || courseAvgs.isEmpty()) return Result.fail();
         return Result.ok(courseAvgs);
+    }
+
+    /**
+     * 查询学生所学课程及学分统计
+     *
+     * @param stuNo 学号
+     */
+    @GetMapping("/stuCourse")
+    public Result getStuCourse(@RequestParam(name = "stuNo", required = false) Integer stuNo) {
+
+        List<StuCourseDto> stuCourses = stuScoreService.getStuCourse(stuNo);
+
+        //判空
+        if (stuCourses == null || stuCourses.isEmpty()) return Result.fail();
+
+        return Result.ok(stuCourses);
     }
 
 }

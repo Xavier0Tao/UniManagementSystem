@@ -1,15 +1,12 @@
 package org.uni.Controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.uni.domain.Teachers;
 import org.uni.service.TeachersService;
-import org.uni.utils.dataModel.Result;
+import org.uni.dto.Result;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -81,8 +78,8 @@ public class TeacherController {
                               @RequestParam(name = "remember",required = false) String rememberMe, HttpServletRequest request, HttpServletResponse response) {
 
         QueryWrapper<Teachers> wrapper = new QueryWrapper<>();
-        wrapper.eq(identity != null, "wt_id", identity)
-                .eq(teacherId != null, "wt_tid", teacherId);
+        wrapper.eq(identity != null, "wt_id10", identity)
+                .eq(teacherId != null, "wt_tid10", teacherId);
 
         Teachers teacher = teachersService.getOne(wrapper);
 
@@ -105,11 +102,11 @@ public class TeacherController {
                                    @RequestParam(name = "teacherRole", required = false) String teacherRole,
                                    @RequestParam(name = "collegeId", required = false) Integer collegeId) {
         QueryWrapper<Teachers> wrapper = new QueryWrapper<>();
-        wrapper.eq(teacherId != null, "wt_tid", teacherId)
-                .eq(identity != null, "wt_id", identity)
-                .eq(teacherName != null, "wt_name", teacherName)
-                .eq(teacherRole != null, "wt_trole", teacherRole)
-                .eq(collegeId != null, "wt_collid", collegeId);
+        wrapper.eq(teacherId != null, "wt_tid10", teacherId)
+                .eq(identity != null, "wt_id10", identity)
+                .eq(teacherName != null, "wt_name10", teacherName)
+                .eq(teacherRole != null, "wt_trole10", teacherRole)
+                .eq(collegeId != null, "wt_collid10", collegeId);
 
         List<Teachers> teachers = teachersService.list(wrapper);
 

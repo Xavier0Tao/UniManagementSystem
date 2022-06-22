@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * @author Tao
- * @description 针对表【wt_ums_class】的数据库操作Service实现
+ * @description 针对表【wt_ums_class10】的数据库操作Service实现
  * @createDate 2022-04-18 14:44:58
  */
 @Service
@@ -34,8 +34,8 @@ public class ClassServiceImpl extends ServiceImpl<ClassMapper, Class> implements
     @Override
     public String getClassMajorById(int id) {
         QueryWrapper<Class> wrapper = new QueryWrapper<>();
-        wrapper.select("wt_mname");
-        wrapper.eq("wt_classno", id);
+        wrapper.select("wt_mname10");
+        wrapper.eq("wt_classno10", id);
 
         return String.valueOf(classDao.selectOne(wrapper));
     }

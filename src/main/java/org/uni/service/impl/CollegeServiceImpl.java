@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
 * @author Tao
-* @description 针对表【wt_ums_college】的数据库操作Service实现
+* @description 针对表【wt_ums_college10】的数据库操作Service实现
 * @createDate 2022-04-18 12:49:18
 */
 @Service
@@ -42,7 +42,7 @@ public class CollegeServiceImpl extends ServiceImpl<CollegeMapper,College> imple
 
     @Override
     public List<College> queryByName(String name) {
-        return mapper.selectList(new QueryWrapper<College>().eq("wt_collname", name));
+        return mapper.selectList(new QueryWrapper<College>().eq("wt_collname10", name));
     }
 
 

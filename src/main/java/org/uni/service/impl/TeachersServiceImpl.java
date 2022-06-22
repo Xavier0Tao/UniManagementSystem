@@ -33,7 +33,7 @@ implements TeachersService{
      */
     @Override
     public boolean hasDuplicateId(String identity) {
-        Students stu = studentsDao.selectOne(new QueryWrapper<Students>().eq("wt_id", identity));
+        Students stu = studentsDao.selectOne(new QueryWrapper<Students>().eq("wt_id10", identity));
 
         if(stu == null) return false;
         else return true;
@@ -51,7 +51,7 @@ implements TeachersService{
 
     @Override
     public boolean delById(String identity) {
-        return teaDao.delete(new QueryWrapper<Teachers>().eq("wt_id", identity)) > 0;
+        return teaDao.delete(new QueryWrapper<Teachers>().eq("wt_id10", identity)) > 0;
     }
 
     @Override
@@ -66,7 +66,7 @@ implements TeachersService{
 
     @Override
     public Teachers getById(String identity) {
-        return teaDao.selectOne(new QueryWrapper<Teachers>().eq("wt_id", identity));
+        return teaDao.selectOne(new QueryWrapper<Teachers>().eq("wt_id10", identity));
     }
 
 

@@ -17,19 +17,20 @@ import org.springframework.stereotype.Repository;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode
+@TableName("wt_ums_college10")
 public class College implements Serializable {
     /**
      * 学院编号
      */
 
 
-    @TableId(value = "wt_collid")
+    @TableId(value = "wt_collid10")
     private Integer collegeId;
 
     /**
      *
      */
-    @TableField("wt_collname")
+    @TableField("wt_collname10")
     private String collegeName;
 
     private static final long serialVersionUID = 1L;

@@ -13,7 +13,7 @@ import lombok.*;
 /**
  * @TableName wt_ums_stu_check
  */
-@TableName(value = "wt_ums_stu_check")
+@TableName(value = "wt_ums_stu_check10")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,13 +24,13 @@ public class StuCheck implements Serializable {
     /**
      * 学生编号
      */
-    @TableField(value = "wt_sid")
+    @TableField(value = "wt_sid10")
     private Integer sid;
 
     /**
      * 打卡记录
      */
-    @TableField(value = "wt_records")
+    @TableField(value = "wt_records10")
     private Date records;
 
     public StuCheck(Integer sid) {

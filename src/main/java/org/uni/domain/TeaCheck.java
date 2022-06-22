@@ -13,7 +13,7 @@ import lombok.*;
  * 
  * @TableName wt_ums_tea_check
  */
-@TableName(value ="wt_ums_tea_check")
+@TableName(value ="wt_ums_tea_check10")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,13 +23,13 @@ public class TeaCheck implements Serializable {
     /**
      * 教师编号
      */
-    @TableField(value = "wt_tid")
+    @TableField(value = "wt_tid10")
     private Integer tid;
 
     /**
      * 打卡记录
      */
-    @TableField(value = "wt_records")
+    @TableField(value = "wt_records10")
     private Date records;
 
     public TeaCheck(Integer tid) {

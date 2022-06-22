@@ -3,6 +3,7 @@ package org.uni.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.uni.domain.StuScore;
 import org.uni.dto.CourseAvgDto;
+import org.uni.dto.StuCourseDto;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ import java.util.List;
 */
 public interface WtStuScoreService extends IService<StuScore> {
     List<CourseAvgDto> getCourseAvg();
+
+    List<StuCourseDto> getStuCourse(Integer stuNo);
 }

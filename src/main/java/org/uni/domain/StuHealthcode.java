@@ -12,7 +12,7 @@ import lombok.*;
  * 
  * @TableName wt_ums_stu_healthcode
  */
-@TableName(value ="wt_ums_stu_healthcode")
+@TableName(value ="wt_ums_stu_healthcode10")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,13 +22,13 @@ public class StuHealthcode implements Serializable {
     /**
      * 学生编号
      */
-    @TableId(value = "wt_sid")
+    @TableId(value = "wt_sid10")
     private int sid;
 
     /**
      * 码颜色
      */
-    @TableField(value = "wt_code_color")
+    @TableField(value = "wt_code_color10")
     private String codeColor;
 
     @TableField(exist = false)

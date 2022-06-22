@@ -2,7 +2,7 @@ package org.uni.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.uni.domain.StuHealthcode;
-import org.uni.utils.dataModel.healthCondition;
+import org.uni.dto.healthCondition;
 
 /**
 * @author Tao
@@ -10,7 +10,7 @@ import org.uni.utils.dataModel.healthCondition;
 * @createDate 2022-04-18 15:22:09
 */
 public interface HealthcodeService extends IService<StuHealthcode> {
-    public String judgeCode(healthCondition condition);
+    String judgeCode(healthCondition condition);
 
     boolean setCode(String identity,String color);
 

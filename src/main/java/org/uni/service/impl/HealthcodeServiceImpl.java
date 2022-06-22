@@ -13,9 +13,7 @@ import org.uni.domain.Students;
 import org.uni.domain.TeaHealthcode;
 import org.uni.domain.Teachers;
 import org.uni.service.HealthcodeService;
-import org.uni.utils.dataModel.healthCondition;
-
-import javax.print.DocFlavor;
+import org.uni.dto.healthCondition;
 
 /**
 * @author Tao
@@ -59,22 +57,22 @@ public class HealthcodeServiceImpl extends ServiceImpl<stuHealthcodeMapper, StuH
      */
     @Override
     public boolean setCode(String identity, String color) {
-        Students obj = studentsDao.selectOne(new QueryWrapper<Students>().eq("wt_id", identity));
+        Students obj = studentsDao.selectOne(new QueryWrapper<Students>().eq("wt_id10", identity));
         int stu_id = obj == null ? 0 : (int) obj.getSno();
 
-        Teachers teacher = teachersDao.selectOne(new QueryWrapper<Teachers>().eq("wt_id", identity));
+        Teachers teacher = teachersDao.selectOne(new QueryWrapper<Teachers>().eq("wt_id10", identity));
         int teacherId = teacher == null ? 0 : (int) teacher.getTeacherId();
 
         if (stu_id != 0) {
             StuHealthcode stucode = new StuHealthcode(stu_id,color);
             System.out.println("...new StuHealthcode(stu_id,color)..." + color);
-//            return stuHealthcodeDao.update(stucode, new QueryWrapper<StuHealthcode>().eq("wt_sid", stu_id)) > 0;
+//            return stuHealthcodeDao.update(stucode, new QueryWrapper<StuHealthcode>().eq("wt_sid10", stu_id)) > 0;
 //            return stuHealthcodeDao.updateById(stucode) > 0;
             return stuHealthcodeDao.update(stucode.getCodeColor(), stucode.getSid()) > 0;
         } else if (teacherId != 0) {
             TeaHealthcode teacode = new TeaHealthcode(teacherId, color);
             return teaHealthcodeDao.updateById(teacode) > 0 ;
-//            return teaHealthcodeDao.update(teacode, new QueryWrapper<TeaHealthcode>().eq("wt_tid", teacherId)) > 0;
+//            return teaHealthcodeDao.update(teacode, new QueryWrapper<TeaHealthcode>().eq("wt_tid10", teacherId)) > 0;
         }
 
         return false;
@@ -85,7 +83,7 @@ public class HealthcodeServiceImpl extends ServiceImpl<stuHealthcodeMapper, StuH
      */
     @Override
     public StuHealthcode queryCodeStu(int sno, String name) {
-        Students student = studentsDao.selectOne(new QueryWrapper<Students>().eq("wt_sno", sno));
+        Students student = studentsDao.selectOne(new QueryWrapper<Students>().eq("wt_sno10", sno));
         //有这个学生
         if (student != null) {
             //名字也对的上

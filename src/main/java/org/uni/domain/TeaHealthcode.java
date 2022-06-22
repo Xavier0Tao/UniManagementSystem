@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 
 /**
  * 
- * @TableName wt_ums_tea_healthcode
+ * @TableName wt_ums_tea_healthcode10
  */
-@TableName(value ="wt_ums_tea_healthcode")
+@TableName(value ="wt_ums_tea_healthcode10")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,13 +22,13 @@ public class TeaHealthcode implements Serializable {
     /**
      * 教师编号
      */
-    @TableId(value = "wt_tid")
+    @TableId(value = "wt_tid10")
     private Integer tid;
 
     /**
      * 颜色
      */
-    @TableField(value = "wt_code_color")
+    @TableField(value = "wt_code_color10")
     private String codeColor;
 
     @TableField(exist = false)

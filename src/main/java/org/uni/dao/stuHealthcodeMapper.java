@@ -17,7 +17,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 @Repository
 public interface stuHealthcodeMapper extends BaseMapper<StuHealthcode> {
 
-    @Update("update wangt_mis.wt_ums_stu_healthcode set wt_code_color = #{color} where wt_sid=#{id}")
+    @Update("update wangt_mis10.wt_ums_stu_healthcode10 set wt_code_color10 = #{color} where wt_sid10=#{id}")
     public int update(@Param("color") String color,@Param("id") Integer id);
 
 }

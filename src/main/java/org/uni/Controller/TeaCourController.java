@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.uni.domain.TeaCour;
 import org.uni.service.TeaCourService;
-import org.uni.utils.dataModel.Result;
+import org.uni.dto.Result;
 
 import java.util.List;
 
@@ -29,8 +29,8 @@ public class TeaCourController {
     @DeleteMapping("/{teacherId}/{courseNo}")
     public Result del(@PathVariable Integer teacherId, @PathVariable Integer courseNo) {
         QueryWrapper<TeaCour> wrapper = new QueryWrapper<>();
-        wrapper.eq("wt_tid", teacherId);
-        wrapper.eq("wt_cno", courseNo);
+        wrapper.eq("wt_tid10", teacherId);
+        wrapper.eq("wt_cno10", courseNo);
 
         return new Result(teaCourService.remove(wrapper));
     }

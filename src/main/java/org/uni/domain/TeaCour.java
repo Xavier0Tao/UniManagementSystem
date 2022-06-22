@@ -12,7 +12,7 @@ import lombok.*;
  * 
  * @TableName wt_ums_tea_cour
  */
-@TableName(value ="wt_ums_tea_cour")
+@TableName(value ="wt_ums_tea_cour10")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,13 +22,13 @@ public class TeaCour implements Serializable {
     /**
      * 教师编号
      */
-    @TableField(value = "wt_tid")
+    @TableField(value = "wt_tid10")
     private Integer tid;
 
     /**
      * 课程编号
      */
-    @TableField(value = "wt_cno")
+    @TableField(value = "wt_cno10")
     private Integer cno;
 
     @TableField(exist = false)

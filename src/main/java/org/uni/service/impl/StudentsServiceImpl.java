@@ -24,7 +24,7 @@ public class StudentsServiceImpl extends ServiceImpl<StudentsMapper, Students>
 
     @Override
     public boolean hasDuplicateId(String identity) {
-        Teachers teacher = teachersDao.selectOne(new QueryWrapper<Teachers>().eq("wt_id", identity));
+        Teachers teacher = teachersDao.selectOne(new QueryWrapper<Teachers>().eq("wt_id10", identity));
         return teacher == null ? false : true;
     }
 

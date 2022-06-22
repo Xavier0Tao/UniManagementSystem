@@ -5,11 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.uni.domain.StuHealthcode;
 import org.uni.domain.TeaHealthcode;
-import org.uni.domain.Teachers;
 import org.uni.service.HealthcodeService;
 import org.uni.service.TeaHealthcodeService;
-import org.uni.utils.dataModel.Result;
-import org.uni.utils.dataModel.healthCondition;
+import org.uni.dto.Result;
+import org.uni.dto.healthCondition;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -73,7 +72,7 @@ public class healthCodeController {
     //教师编号查询健康码
     @GetMapping("/colorByTeachId")
     public Result query(@RequestParam("teacherId") String teacherId) {
-        TeaHealthcode teaHealthcode = teaHealthcodeService.getOne(new QueryWrapper<TeaHealthcode>().eq("wt_tid", teacherId));
+        TeaHealthcode teaHealthcode = teaHealthcodeService.getOne(new QueryWrapper<TeaHealthcode>().eq("wt_tid10", teacherId));
 
         return teaHealthcode == null ? new Result(false, "无此教师的健康码信息") : new Result(teaHealthcode);
     }
