@@ -15,4 +15,5 @@ import org.uni.domain.Class;
 @Repository
 public interface ClassMapper extends BaseMapper<Class> {
 
+
 }

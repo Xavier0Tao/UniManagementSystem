@@ -57,6 +57,9 @@ public class Course implements Serializable {
     @TableField("wt_cterm10")
     private Integer courseTerm;
 
+    @TableField("wt_classno10")
+    private Integer classNo;
+
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 }

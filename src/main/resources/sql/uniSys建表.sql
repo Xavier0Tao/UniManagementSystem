@@ -66,6 +66,8 @@ CREATE TABLE wt_ums_course10(
     wt_chours10 INT COMMENT '课程学时',
     wt_cform10 VARCHAR(2) CHECK ( wt_cform10 ='考试' OR wt_cform10='考查' ) COMMENT '形式',
     wt_cterm10 INT CHECK ( wt_cterm10 < 9  AND wt_cterm10 > 0) COMMENT '开设学期',
+    wt_classno10 INT DEFAULT NULL,
+    FOREIGN KEY fk_class (wt_classno10) REFERENCES wt_ums_class10(wt_classno10),
     INDEX idx_cname (wt_cname10) COMMENT '方便通过课程名称查看课程的其他信息',
     PRIMARY KEY pk_cno (wt_cno10)
 )ENGINE =InnoDB,charset =utf8mb4;

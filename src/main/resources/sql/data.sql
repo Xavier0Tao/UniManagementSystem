@@ -51,10 +51,10 @@ INSERT INTO wt_ums_teachers10(wt_id10, wt_name10, wt_tage10, wt_tsex10, wt_trole
 # select * from wt_ums_teachers;
 
 # 课程信息
-INSERT INTO wt_ums_course10(wt_cname10, wt_ccredit10, wt_chours10, wt_cform10, wt_cterm10) VALUES
-('计算机组成原理',3,64,'考试',4),('编译原理',5,64,'考试',5),('SpringBoot',5,64,'考试',5),
-('Java',3,64,'考试',3),('JavaEE',4,64,'考试',5),('软件测试',2,48,'考查',6),
-('Vue前端框架',3,64,'考试',4),('软件质量保证',2,48,'考查',7),('美学原理',3,48,'考试',3);
+INSERT INTO wt_ums_course10(wt_cname10, wt_ccredit10, wt_chours10, wt_cform10, wt_cterm10,wt_classno10) VALUES
+('计算机组成原理',3,64,'考试',4,2),('编译原理',5,64,'考试',5,4),('SpringBoot',5,64,'考试',5,7),
+('Java',3,64,'考试',3,9),('JavaEE',4,64,'考试',5,12),('软件测试',2,48,'考查',6,14),
+('Vue前端框架',3,64,'考试',4,20),('软件质量保证',2,48,'考查',7,17),('美学原理',3,48,'考试',3,21);
 
 # select * from wt_ums_course;
 

@@ -1,9 +1,13 @@
 package org.uni.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSourceExtensionsKt;
 import org.uni.domain.Class;
 
 import java.util.List;
+import java.util.Map;
+
+import org.uni.domain.Course;
 
 /**
 * @author Tao
@@ -20,4 +24,6 @@ public interface ClassService extends IService<Class> {
     public boolean insert(Class data);
 
     public boolean delById(int id);
+
+    public Map<Class, List<Course>> getCourses();
 }
