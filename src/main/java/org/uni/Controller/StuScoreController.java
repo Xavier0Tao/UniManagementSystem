@@ -9,13 +9,14 @@ import org.uni.dto.StuCourseDto;
 import org.uni.service.WtStuScoreService;
 import org.uni.dto.Result;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
 @RequestMapping("/stuScore")
-public class WtStuScoreController {
-    @Autowired
+public class StuScoreController {
+    @Resource
     private WtStuScoreService stuScoreService;
 
     @GetMapping("/{stuNo}/{courseNo}")
@@ -30,7 +31,8 @@ public class WtStuScoreController {
     }
 
     /**
-     * 根据学号获取学生的成绩信息
+     * 查询统计学生分数
+     *
      */
     @GetMapping
     public Result getScore(@RequestParam(name = "stuNo", required = false) Integer stuNo
@@ -44,13 +46,22 @@ public class WtStuScoreController {
         wrapper.eq(stuNo != null, "wt_sno10", stuNo);
 
         //可选，根据学年查询
-        wrapper.eq(academicYear != null, "wt_cterm10", academicYear);
+        if (academicYear != null) {
+            wrapper.eq("wt_cterm10", academicYear * 2 - 1)
+                    .or().eq("wt_cterm10", academicYear * 2);
+        }
 
         // 查询
         List<StuScore> list = stuScoreService.list(wrapper);
 
         //结果判空,如果结果为空直接返回
         if (list == null || list.isEmpty()) return Result.fail();
+
+        //设置学年字段，因为学年字段是数据库表外部的字段
+        for (StuScore stuScore : list) {
+            Integer term = stuScore.getCterm();
+            if ( term != null) stuScore.setAcademicYear((term + 1) / 2);
+        }
 
         //查询结果非空且需要排序
         if (order != null && order) {
