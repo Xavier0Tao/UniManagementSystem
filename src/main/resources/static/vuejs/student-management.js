@@ -21,7 +21,7 @@ var studentManagement = new Vue({
         queryStuScore: function () {
             let that  = this;
             axios.get("http://" + hostName + ":" + port + "/stuScore?order=" + this.stuScore.order
-                + "&stuNo=" + this.stuScore.stuNo + "&academicYear" + this.stuScore.academicYear)
+                + "&stuNo=" + this.stuScore.stuNo + "&academicYear=" + this.stuScore.academicYear)
                 .then(function (response) {
                     //data:
                     // code: 1

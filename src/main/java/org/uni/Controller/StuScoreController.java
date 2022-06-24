@@ -41,6 +41,8 @@ public class StuScoreController {
             , @RequestParam(name = "academicYear",required = false) Integer academicYear,
                            HttpServletRequest request) {
 
+        System.out.println(academicYear);
+
         //条件
         QueryWrapper<StuScore> wrapper = new QueryWrapper<>();
 
