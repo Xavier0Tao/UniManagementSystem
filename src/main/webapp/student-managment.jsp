@@ -339,7 +339,8 @@
                             </ul>
                         </div>
                         <%--标签页END--%>
-                        <div class="tab-content pt-2">
+
+                        <div class="tab-content pt-2 ps-2 ps-md-4">
                                 <%--查看所有学生--%>
                                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                     <a class=" btn btn-primary my-1" href="/stuServlet/getAll">查看所有学生</a>
@@ -508,6 +509,25 @@
                                             <button type="button" class="btn btn-primary" @click="queryStuScore">查询统计</button>
                                         </div>
                                     </form>
+
+                                    <!--学生成绩表TABLE-->
+                                    <table class="table table-responsive-sm table-striped" id="studentScores" >
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" v-for="items in stuScore.tableHead">{{items}}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="(item,index) in stuScore.data">
+                                            <td>{{item.sno}}</td>
+                                            <td>{{item.cterm}}</td>
+                                            <td>{{item.academicYear}}</td>
+                                            <td>{{item.cno}}</td>
+                                            <td>{{item.score}}</td>
+                                            <td>{{item.tid}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
 
                                 </div>
                                 <%--统计学生成绩END--%>
