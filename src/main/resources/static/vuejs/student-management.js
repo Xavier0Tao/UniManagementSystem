@@ -30,7 +30,7 @@ var studentManagement = new Vue({
                     // 1: {sno: 4, cno: 9, cterm: 3, academicYear: 2, score: 80, …}
                     // length: 2
                     console.log(response);
-                    if (response.status === 200 && response.data.code === 1) {
+                    if (response.status === 200 ) {
                         let stuScores = response.data.data;
                         console.log(stuScores);
                         that.stuScore.data = stuScores;
