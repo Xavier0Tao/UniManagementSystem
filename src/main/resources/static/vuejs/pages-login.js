@@ -1,4 +1,5 @@
 let hostName ='localhost';
+let port = "30";
 
 var registerCard = new Vue({
     el:"#login-card",

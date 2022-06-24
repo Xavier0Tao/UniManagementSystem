@@ -1,4 +1,3 @@
-let hostName = 'localhost';
 
 let registerCard = new Vue({
     el: "#register-card",

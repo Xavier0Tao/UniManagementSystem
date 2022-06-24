@@ -310,9 +310,9 @@
 
                 </div>
 
-                <div class="col-xl-8">
-
+                <div class="col-xl-8" id="studentManagement">
                     <div class="card">
+                        <%--标签页--%>
                         <div class="card-body pt-3">
                             <!-- Bordered Tabs -->
                             <ul class="nav nav-tabs nav-tabs-bordered">
@@ -332,26 +332,32 @@
                                             data-bs-target="#profile-settings">删除学生</button>
                                 </li>
 
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab"
+                                            data-bs-target="#student-score">统计学生成绩</button>
+                                </li>
                             </ul>
-
-                            <div class="tab-content pt-2">
-
+                        </div>
+                        <%--标签页END--%>
+                        <div class="tab-content pt-2">
+                                <%--查看所有学生--%>
                                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                     <a class=" btn btn-primary my-1" href="/stuServlet/getAll">查看所有学生</a>
                                     <p class="small fst-italic">点击上面的<span class="lead mx-1">按钮</span>查看所有学生信息</p>
                                     ${students}
                                 </div>
+                                <%--查看所有学生--%>
 
+                                <%--添加学生--%>
                                 <div class="tab-pane fade  profile-edit pt-3" id="profile-edit">
-
                                     <!-- Custom Styled Validation -->
                                     <form class="row g-3 needs-validation" action="/stuServlet/add" method="post"  validate>
                                         <div class="card-title">添加学生</div>
 
                                         <!--===============name===============-->
                                         <div class="col-md-4">
-                                            <label for="validationCustom01" class="form-label">Student name</label>
-                                            <input type="text" name="sname" class="form-control" id="validationCustom01"
+                                            <label  class="form-label">Student name</label>
+                                            <input type="text" name="sname" class="form-control"
                                                    placeholder="请输入学生姓名" required>
                                             <div class="valid-feedback">
                                                 Looks good!
@@ -360,8 +366,8 @@
 
                                         <!--===============Identity===============-->
                                         <div class="col-md-6">
-                                            <label for="" class="form-label">身份证号</label>
-                                            <input type="text" class="form-control" name="identity" id=""
+                                            <label class="form-label">身份证号</label>
+                                            <input type="text" class="form-control" name="identity"
                                                    placeholder="必填" title="身份证" >
                                             <div class="invalid-feedback">
                                                 Please provide a valid id.
@@ -398,6 +404,7 @@
                                             </div>
                                         </div>
 
+                                        <%--专业编号--%>
                                         <div class="col-md-6">
                                             <label for="validationCustom04" class="form-label">Major No</label>
                                             <input type="number" class="form-control" name="mno" id="validationCustom04"
@@ -417,7 +424,7 @@
                                         </div>
 
 
-
+                                        <%--承诺同意--%>
                                         <div class="col-12">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value=""
@@ -435,9 +442,10 @@
                                             <button type="submit" class="btn btn-primary">添 加</button>
                                         </div>
                                     </form><!-- End Custom Styled Validation -->
-
                                 </div>
+                                <%--添加学生END--%>
 
+                                <%--删除学生--%>
                                 <div class="tab-pane fade pt-3" id="profile-settings">
 
                                     <!-- Settings Form -->
@@ -459,19 +467,60 @@
                                     </form><!-- End settings Form -->
 
                                 </div>
+                                <%--删除学生 END--%>
 
+                                <%--统计学生成绩--%>
+                                <div class="tab-pane fade pt-3" id="student-score">
+                                    <form class="row g-3 needs-validation" action="/stuServlet/add" method="post"  validate>
+                                        <div class="card-title">统计学生成绩</div>
+
+                                        <!--===============学生编号===============-->
+                                        <div class="col-md-3">
+                                            <label class="form-label">Student Number</label>
+                                            <input type="number" v-model="stuScore.stuNo" class="form-control"
+                                                   placeholder="请输入学生编号" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+
+                                        <!--===============学年===============-->
+                                        <div class="col-md-2">
+                                            <label class="form-label">Academic Year</label>
+                                            <input type="number" class="form-control" v-model="stuScore.academicYear"
+                                                   placeholder="选填" title="Academic Year" >
+                                            <div class="invalid-feedback">
+                                                Please provide a valid id.
+                                            </div>
+                                        </div>
+
+                                        <!--===============是否排序===============-->
+                                        <div class="col-md-4">
+                                            <label class="form-label">Order Ascendingly</label>
+                                            <input type="number" class="form-control" v-model="stuScore.order"
+                                                   placeholder="选填" title="Order" >
+                                            <div class="invalid-feedback">
+                                                Please provide a valid id.
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-primary" @click="queryStuScore">查询统计</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <%--统计学生成绩END--%>
 
                             </div><!-- End Bordered Tabs -->
-
-                        </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
     </main><!-- End #main -->
 
+    <script src="vuejs/student-management.js"></script>
     <%@include file="footer.jsp" %>
 
 </body>

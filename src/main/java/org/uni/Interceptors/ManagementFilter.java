@@ -29,7 +29,11 @@ public class ManagementFilter implements Filter {
         String requestURI = httprequest.getRequestURI().substring(1);
 
         Logger logger = Logger.getLogger(ManagementFilter.class.getName());
-        logger.info("请求路径为：" + requestURI);
+
+        //assets中的请求不需要打印
+        int slash = requestURI.indexOf("/");
+        if (slash == -1 || slash == 0) logger.info("请求路径为：" + requestURI);
+        else if (!"assets".equals(requestURI.substring(0, slash))) logger.info("请求路径为：" + requestURI);
 
         //==============从session中获取登录信息============
         String role = (String) session.getAttribute("ROLE");

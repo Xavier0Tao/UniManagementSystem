@@ -10,6 +10,7 @@ import org.uni.service.WtStuScoreService;
 import org.uni.dto.Result;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -37,7 +38,11 @@ public class StuScoreController {
     @GetMapping
     public Result getScore(@RequestParam(name = "stuNo", required = false) Integer stuNo
             , @RequestParam(name = "order", required = false) Boolean order
-            , @RequestParam(name = "academicYear",required = false) Integer academicYear) {
+            , @RequestParam(name = "academicYear",required = false) Integer academicYear,
+                           HttpServletRequest request) {
+
+        System.out.println(stuNo);
+        System.out.println(academicYear);
 
         //条件
         QueryWrapper<StuScore> wrapper = new QueryWrapper<>();
@@ -73,6 +78,9 @@ public class StuScoreController {
                     }
             );
         }
+
+        request.setAttribute("stuScore", list);
+
         return Result.ok(list);
     }
 
