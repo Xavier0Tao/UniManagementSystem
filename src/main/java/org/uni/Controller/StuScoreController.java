@@ -1,7 +1,6 @@
 package org.uni.Controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.uni.domain.StuScore;
 import org.uni.domain.Students;
@@ -124,7 +123,9 @@ public class StuScoreController {
 
     @GetMapping("/credit/{stuNo}")
     public Result getCredit(@PathVariable(name = "stuNo")Integer stuNo) {
-        Integer scredits = studentsService.getOne(new QueryWrapper<Students>().select("wt_scredits10").eq("wt_sno10", stuNo)).getScredits();
+        Students student = studentsService.getOne(new QueryWrapper<Students>().eq("wt_sno10", stuNo));
+        Integer scredits = student.getScredits();
+
         if (scredits == null) return Result.fail();
         return Result.ok(scredits);
     }

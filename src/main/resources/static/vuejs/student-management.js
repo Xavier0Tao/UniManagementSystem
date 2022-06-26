@@ -114,7 +114,7 @@ var studentManagement = new Vue({
                                     console.log(response);
 
                                     //回显学分
-                                    that.recordScore.credits = response.data;
+                                    that.recordScore.credits = response.data.data;
                                 }
                             });
                     }
