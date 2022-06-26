@@ -4,22 +4,34 @@ var studentManagement = new Vue({
     el: "#studentManagement",
     data: {
         stuScore: {
+            //统计学生成绩模块
             stuNo: "",
             academicYear: "",
             order: "",
+            //数据格式
             //academicYear: 3
             // cno: 5
             // cterm: 5
             // score: 90
             // sno: 1
             // tid: 2
-            tableHead:['学生编号','学期','学年','课程号','分数','教师编号'],
-            data:[]
+            tableHead: ['学生编号', '学期', '学年', '课程号', '分数', '教师编号'],
+            data: []
         },
-        stuCourse:{
+        stuCourse: {
+            // 学生所学课程和学分统计模块
             stuNo: "",
-            tableHead: ['stuNo', 'stuName','courseNo','courseName','courseCredit'],
-            data:[]
+            tableHead: ['stuNo', 'stuName', 'courseNo', 'courseName', 'courseCredit'],
+            data: []
+        },
+        recordScore: {
+            // 录入成绩模块
+            sno: "",
+            cno: "",
+            score: "",
+            cterm: "",
+            tid: "",
+            credits:""
         }
     },
     methods: {
@@ -42,7 +54,7 @@ var studentManagement = new Vue({
                 alert("查询失败!");
             });
         },
-        queryStuCourse: function (response) {
+        queryStuCourse: function () {
             let that = this;
             let URL;
 
@@ -72,6 +84,42 @@ var studentManagement = new Vue({
                     }
                 }).catch(function (error) {
                 alert("查询失败!");
+            });
+        },
+        uploadStuScore: function () {
+            let recordScore = this.recordScore;
+            let that = this;
+
+            //判空，表单校验
+            if (recordScore.stuNo === ""
+                || recordScore.mark === ""
+                || recordScore.courseCode === ""
+                || recordScore.semester === "") {
+                alert("请完成必要信息的填写！");
+                return false;
+            }
+
+            let URL = "http://" + hostName + ":" + port + "/stuScore";
+
+            axios.post(URL, this.recordScore)
+                .then(function (response) {
+                    //结果响应成功
+                    if (response.status === 200) {
+                        console.log(response);
+
+                        //获取学生学分，并回显
+                        axios.get("http://" + hostName + ":" + port + "/stuScore/credit/" + recordScore.sno)
+                            .then(function (response){
+                                if (response.status === 200) {
+                                    console.log(response);
+
+                                    //回显学分
+                                    that.recordScore.credits = response.data;
+                                }
+                            });
+                    }
+                }).catch(function (error){
+                alert("成绩录入失败！");
             });
         }
     }

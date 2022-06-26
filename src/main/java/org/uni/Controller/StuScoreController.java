@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.uni.domain.StuScore;
+import org.uni.domain.Students;
 import org.uni.dto.CourseAvgDto;
 import org.uni.dto.StuCourseDto;
+import org.uni.service.StudentsService;
 import org.uni.service.WtStuScoreService;
 import org.uni.dto.Result;
 
@@ -19,6 +21,9 @@ import java.util.List;
 public class StuScoreController {
     @Resource
     private WtStuScoreService stuScoreService;
+
+    @Resource
+    private StudentsService studentsService;
 
     @GetMapping("/{stuNo}/{courseNo}")
     public Result getOne(@PathVariable(name = "stuNo") Integer stuNo,
@@ -37,7 +42,7 @@ public class StuScoreController {
     @GetMapping
     public Result getScore(@RequestParam(name = "stuNo", required = false) Integer stuNo
             , @RequestParam(name = "order", required = false) Boolean order
-            , @RequestParam(name = "academicYear",required = false) Integer academicYear,
+            , @RequestParam(name = "academicYear", required = false) Integer academicYear,
                            HttpServletRequest request) {
         //条件
         QueryWrapper<StuScore> wrapper = new QueryWrapper<>();
@@ -60,7 +65,7 @@ public class StuScoreController {
         //设置学年字段，因为学年字段是数据库表外部的字段
         for (StuScore stuScore : list) {
             Integer term = stuScore.getCterm();
-            if ( term != null) stuScore.setAcademicYear((term + 1) / 2);
+            if (term != null) stuScore.setAcademicYear((term + 1) / 2);
         }
 
         //查询结果非空且需要排序
@@ -103,10 +108,11 @@ public class StuScoreController {
 
     /**
      * 查询学生所学课程及学分统计
+     *
      * @param stuNo 学号
      */
     @GetMapping("/stuCourse")
-    public Result getStuCourse(@RequestParam(name = "stuNo",required = false) Integer stuNo) {
+    public Result getStuCourse(@RequestParam(name = "stuNo", required = false) Integer stuNo) {
         List<StuCourseDto> stuCourses = stuScoreService.getStuCourse(stuNo);
 
         //判空
@@ -116,4 +122,10 @@ public class StuScoreController {
     }
 
 
+    @GetMapping("/credit/{stuNo}")
+    public Result getCredit(@PathVariable(name = "stuNo")Integer stuNo) {
+        Integer scredits = studentsService.getOne(new QueryWrapper<Students>().select("wt_scredits10").eq("wt_sno10", stuNo)).getScredits();
+        if (scredits == null) return Result.fail();
+        return Result.ok(scredits);
+    }
 }
