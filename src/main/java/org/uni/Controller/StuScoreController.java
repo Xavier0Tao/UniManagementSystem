@@ -33,16 +33,12 @@ public class StuScoreController {
 
     /**
      * 查询统计学生分数
-     *
      */
     @GetMapping
     public Result getScore(@RequestParam(name = "stuNo", required = false) Integer stuNo
             , @RequestParam(name = "order", required = false) Boolean order
             , @RequestParam(name = "academicYear",required = false) Integer academicYear,
                            HttpServletRequest request) {
-
-        System.out.println(academicYear);
-
         //条件
         QueryWrapper<StuScore> wrapper = new QueryWrapper<>();
 
@@ -107,12 +103,10 @@ public class StuScoreController {
 
     /**
      * 查询学生所学课程及学分统计
-     *
      * @param stuNo 学号
      */
     @GetMapping("/stuCourse")
-    public Result getStuCourse(@RequestParam(name = "stuNo", required = false) Integer stuNo) {
-
+    public Result getStuCourse(@RequestParam(name = "stuNo",required = false) Integer stuNo) {
         List<StuCourseDto> stuCourses = stuScoreService.getStuCourse(stuNo);
 
         //判空
@@ -120,5 +114,6 @@ public class StuScoreController {
 
         return Result.ok(stuCourses);
     }
+
 
 }

@@ -336,6 +336,11 @@
                                     <button class="nav-link" data-bs-toggle="tab"
                                             data-bs-target="#student-score">统计学生成绩</button>
                                 </li>
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab"
+                                            data-bs-target="#student-course">统计学生所学课程和学分</button>
+                                </li>
+
                             </ul>
                         </div>
                         <%--标签页END--%>
@@ -476,7 +481,7 @@
                                         <div class="card-title">统计学生成绩</div>
 
                                         <!--===============学生编号===============-->
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <label class="form-label">Student Number</label>
                                             <input type="number" v-model="stuScore.stuNo" class="form-control"
                                                    placeholder="请输入学生编号" required>
@@ -486,7 +491,7 @@
                                         </div>
 
                                         <!--===============学年===============-->
-                                        <div class="col-md-2">
+                                        <div class="col-md-4">
                                             <label class="form-label">Academic Year</label>
                                             <input type="number" class="form-control" v-model="stuScore.academicYear"
                                                    placeholder="选填" title="Academic Year" >
@@ -532,6 +537,48 @@
                                 </div>
                                 <%--统计学生成绩END--%>
 
+                                <%--统计学生所学课程--%>
+                                <div class="tab-pane fade pt-3" id="student-course">
+                                    <%--id="student-course" 是为了和标签页的toggle配对--%>
+
+                                    <form class="row g-3 needs-validation" >
+                                        <div class="card-title">学生所学课程及学分统计</div>
+
+                                        <!--===============学生编号===============-->
+                                        <div class="col-md-4">
+                                            <label class="form-label">Student Number</label>
+                                            <input type="number" v-model="stuCourse.stuNo" class="form-control"
+                                                   placeholder="请输入学生编号" required>
+                                            <div class="valid-feedback">
+                                                Looks good!
+                                            </div>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-primary" @click="queryStuCourse">查询</button>
+                                        </div>
+                                    </form>
+
+                                    <!--学生所学课程表-->
+                                    <table class="table table-responsive-sm table-striped"  >
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" v-for="item in stuCourse.tableHead">{{item}}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="(item,index) in stuCourse.data">
+                                            <td>{{item.stuNo}}</td>
+                                            <td>{{item.stuName}}</td>
+                                            <td>{{item.courseNo}}</td>
+                                            <td>{{item.courseName}}</td>
+                                            <td>{{item.courseCredit}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <%--统计学生所学课程END--%>
                             </div><!-- End Bordered Tabs -->
                     </div>
                 </div>

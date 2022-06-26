@@ -30,8 +30,16 @@ public class WtStuScoreServiceImpl extends ServiceImpl<StuScoreMapper, StuScore>
 
     @Override
     public List<StuCourseDto> getStuCourse(Integer stuNo) {
-        return stuScoreMapper.getStuCourse(stuNo);
+        List<StuCourseDto> stuCourses = stuScoreMapper.getStuCourse(stuNo);
+
+        //如果没有指定学号，那么查询所有
+        if (stuNo == null) return stuCourses;
+
+        //如果指定了,那么根据学号筛选出指定学号的结果
+        stuCourses.removeIf(stuCourseDto -> !stuCourseDto.getStuNo().equals(stuNo));
+        return stuCourses;
     }
+
 
 }
 
