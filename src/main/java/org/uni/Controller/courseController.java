@@ -17,7 +17,7 @@ public class courseController {
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("/")
+    @GetMapping
     public Result getAll() {
         List<Course> list = courseService.list();
 

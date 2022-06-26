@@ -109,7 +109,7 @@
 
             </div>
 
-            <div class="col-xl-8">
+            <div class="col-xl-8" id="class-managementSection">
 
                 <div class="card">
                     <div class="card-body pt-3">
@@ -139,14 +139,13 @@
                         <div class="tab-content pt-2">
 
                             <!--查看所有班级-->
-                            <!--查看所有班级-->
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 <a class=" btn btn-primary my-1" href="/classServlet/getAll">查看所有班级</a>
                                 <p class="small fst-italic">点击上面的<span class="lead mx-1">按钮</span>查看所有班级信息</p>
                                 ${classes}
                             </div>
+                            <!--查看所有班级END-->
 
-                            <!-- ================添加班级================= -->
                             <!-- ================添加班级================= -->
                             <div class="tab-pane fade  profile-edit pt-3" id="profile-edit">
                                 <form class="row g-3 needs-validation" action="/classServlet/add" method="post"  validate>
@@ -184,6 +183,7 @@
                                     </div>
                                 </form><!-- End Custom Styled Validation -->
                             </div>
+                            <!-- ================添加班级END================= -->
 
                             <!--===========删除班级==========-->
                             <div class="tab-pane fade pt-3" id="profile-settings">
@@ -220,23 +220,37 @@
                                 <form action="/classServlet/delete" method="post" validate>
                                     <div class="card-title">班级课程开设查询</div>
 
-                                    <!--===============College Id============-->
+                                    <!--===============Class Id============-->
                                     <div class="col-md-4">
                                         <label class="form-label">Class Id</label>
-                                        <div class="input-group has-validation">
+                                        <div class="input-group">
                                             <span class="input-group-text" >@</span>
-                                            <input type="number" class="form-control"
-                                                   name="classNo"  title="班级编号" required>
-                                            <div class="invalid-feedback">
-                                                Please enter a class id.
-                                            </div>
+                                            <input type="number" v-model="class_course.classNo" class="form-control" title="班级编号">
                                         </div>
-                                    </div>1
+                                    </div>
 
-
+                                    <!--学生成绩表TABLE-->
+                                    <table class="table table-responsive-sm table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" v-for="items in class_course.tableHead">{{items}}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="(item,index) in class_course.courses">
+                                            <td>{{item.courseNo}}</td>
+                                            <td>{{item.courseName}}</td>
+                                            <td>{{item.courseCredit}}</td>
+                                            <td>{{item.courseHours}}</td>
+                                            <td>{{item.courseForm}}</td>
+                                            <td>{{item.courseTerm}}</td>
+                                            <td>{{item.classNo}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
 
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-primary">Query</button>
+                                        <button type="button" @click="queryClassCourse" class="btn btn-primary">Query</button>
                                     </div>
                                 </form><!-- End settings Form -->
 
@@ -252,6 +266,8 @@
     </section>
 
 </main><!-- End #main -->
+
+<script src="vuejs/class-management.js"></script>
 
 <%@include file="footer.jsp" %>
 
