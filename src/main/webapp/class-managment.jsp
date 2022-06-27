@@ -134,6 +134,10 @@
                                 <button class="nav-link" data-bs-toggle="tab"
                                         data-bs-target="#class-courses">班级开设课程</button>
                             </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab"
+                                        data-bs-target="#course-avg">课程平均分查询</button>
+                            </li>
                         </ul>
 
                         <div class="tab-content pt-2">
@@ -251,6 +255,35 @@
 
                                     <div class="text-center">
                                         <button type="button" @click="queryClassCourse" class="btn btn-primary">Query</button>
+                                    </div>
+                                </form><!-- End settings Form -->
+
+                            </div>
+
+                            <!--===========每门课程平均成绩统计==========-->
+                            <div class="tab-pane fade pt-3" id="course-avg">
+                                <!-- Settings Form -->
+                                <form action="/classServlet/delete" method="post" validate>
+                                    <div class="card-title">课程平均成绩</div>
+
+                                    <!--学生成绩表TABLE-->
+                                    <table class="table table-responsive-sm table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" v-for="items in courseAvg.tableHead">{{items}}</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr v-for="(item,index) in courseAvg.data">
+                                            <td>{{item.courseNo}}</td>
+                                            <td>{{item.courseName}}</td>
+                                            <td>{{item.avg}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <div class="text-center">
+                                        <button type="button" @click="queryCourseAvg" class="btn btn-primary">Query</button>
                                     </div>
                                 </form><!-- End settings Form -->
 
