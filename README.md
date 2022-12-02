@@ -63,7 +63,7 @@ Students and administrators have different access to the Management System.
 
 3. Query grades and credits
 
-> Administrators can query students' grade and credits by specifying a student number when querying or just query all results.
+> Administrators can query students' grade and credits by specifying a student number or just query all results.
 
 ![img.png](imgs/gradeCredits.png)
 
