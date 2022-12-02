@@ -97,7 +97,7 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                        <h2>班级管理</h2>
+                        <h2>Class Management</h2>
                         <div class="social-links mt-2">
                             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -159,7 +159,7 @@
                                         <label for="validationCustomUsername"
                                                class="form-label">Major Id</label>
                                         <div class="input-group has-validation">
-                                            <span class="input-group-text" id="addClass">@</span>
+                                            <span class="input-group-text" id="addClass">Class No</span>
                                             <input type="number" class="form-control"
                                                    id="" placeholder="请输入班级所属专业的编号"
                                                    name="majorId" title="专业编号" required>
@@ -222,11 +222,11 @@
                             <div class="tab-pane fade pt-3" id="class-courses">
                                 <!-- Settings Form -->
                                 <form action="/classServlet/delete" method="post" validate>
-                                    <div class="card-title">班级课程开设查询</div>
+                                    <div class="card-title">Courses</div>
 
                                     <!--===============Class Id============-->
                                     <div class="col-md-4">
-                                        <label class="form-label">Class Id</label>
+                                        <label class="form-label">Course Id</label>
                                         <div class="input-group">
                                             <span class="input-group-text" >@</span>
                                             <input type="number" v-model="class_course.classNo" class="form-control" title="班级编号">

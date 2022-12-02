@@ -20,7 +20,7 @@ var userInfo = new Vue({
     el: "#userInfo",
     data: {
         user: {
-            name: "请登录",
+            name: "Plz Login",
             role: "",
             codeColor: "",
             stuffId: ""

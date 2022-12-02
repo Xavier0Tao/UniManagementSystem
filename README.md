@@ -8,6 +8,11 @@ Students and administrators have different access to the Management System.
 
 ---
 
+![](imgs/index.jpg)
+
+---
+
+
 ### Tech Stack:
 - 🍃 SpringBoot v2.5.4
   - Utilize Spring Boot auto-configuration, make project launching faster.
@@ -56,15 +61,32 @@ Students and administrators have different access to the Management System.
 
 ![img.png](imgs/LoginRegis.png)
 
+3. Query grades and credits
 
+> Administrators can query students' grade and credits by specifying a student number when querying or just query all results.
+
+![img.png](imgs/gradeCredits.png)
+
+
+4. Query courses and corresponding credits.
+
+> Administrators can query all courses information or query one specific course by course Id.
+
+![img.png](imgs/queryCourses.png)
+
+5. Requests from students could be denied because of lack of access.
+
+> Administrators and students have different access to resources.
+
+![img.png](imgs/access.png)
 
 ---
 ### ER Diagram
 > ER diagram design for persistence layer.
 
 ![img.png](imgs/ERdiagram.png)
-
+  
 ---
 ### Entities mapping relationship
 
-![img.png](classMapping.png)
+![img.png](imgs/classMapping.png)

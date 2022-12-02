@@ -298,7 +298,7 @@
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-                            <h2>学生管理</h2>
+                            <h2>Students Management</h2>
                             <div class="social-links mt-2">
                                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -546,7 +546,7 @@
                                 <%--id="student-course" 是为了和标签页的toggle配对--%>
 
                                 <form class="row g-3 needs-validation" >
-                                    <div class="card-title">学生所学课程及学分统计</div>
+                                    <div class="card-title">Grade and Credits</div>
 
                                     <!--===============学生编号===============-->
                                     <div class="col-md-4">
@@ -559,7 +559,7 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button type="button" class="btn btn-primary" @click="queryStuCourse">查询</button>
+                                        <button type="button" class="btn btn-primary" @click="queryStuCourse">Query</button>
                                     </div>
                                 </form>
 
