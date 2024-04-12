@@ -43,9 +43,6 @@ Students and administrators have different access to the Management System.
 
 ### What it does?
 
-⚠️This project was intended to be developed in bilingual.
-
-⚠️If it causes any confusion, I'm sorry about that.
 
 
 1. Everyday **CHECK IN**.
