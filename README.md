@@ -34,7 +34,7 @@ Students and administrators have different access to the Management System.
 
 ### System Architecture
 
-![img.png](imgs/img.png)
+![uniProjectArchietecture-v1](https://github.com/Xavier0Tao/UniManagementSystem/assets/90764344/b7409b74-5cc8-489a-99c0-01f645252afb)
 
 - Browser(user end) directly interacts with Tomcat.
 - Server handles user requests, interact with database, and sends back response to browser.
